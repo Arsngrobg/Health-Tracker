@@ -3,7 +3,7 @@ A health tracker web application developed using Node.js and the Express.js fram
 
 ## Installation
 ### Prerequisites:
-* Must have node installed on your system
+* Must have Node.js installed on your system
 
 #### To initialise the project:
 ```
