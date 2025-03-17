@@ -1,5 +1,5 @@
 # TODO
-This is to have a clear picture on what is done and what needs doing.
+This list is a marker to determine what the Health Tracker should have as a minimum.
 
 ## Database Backend & User Login
  - [x] Setup Node Enviroment
