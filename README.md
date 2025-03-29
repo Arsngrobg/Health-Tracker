@@ -12,7 +12,7 @@ npm init
 
 #### To install the project dependencies:
 ```
-npm install express nodemon ejs dotenv
+npm install
 ```
 
 ## Usage
@@ -28,4 +28,4 @@ or
 npm run start
 ```
 
-The former script is used for development
+The former script should be used for development

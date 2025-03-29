@@ -7,7 +7,7 @@
     "start": "node app.js",
     "dev": "nodemon app.js"
   },
-  "authors": "",
+  "authors": "Aidan Barden, James Armstrong, James Barnard, Exp Omozee, and Dom Lansdale-Brown",
   "license": "ISC",
   "devDependencies": {
     "dotenv": "^16.4.7",
@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "ejs": "^3.1.10",
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "mysql2": "^3.14.0"
   }
 }
