@@ -1,0 +1,100 @@
+[
+    {
+        "item": "Chicken Breast",
+        "calories": 165,
+        "fats": 3.6,
+        "carbs": 0,
+        "protein": 31,
+        "perGrams": 100
+    },
+
+    {
+        "item": "Chicken Thigh",
+        "calories": 177,
+        "fats": 8,
+        "carbs": 0,
+        "protein": 24,
+        "perGrams": 100
+    },
+
+    {
+        "item": "Potatoes",
+        "calories": 110,
+        "fats": 0,
+        "carbs": 26,
+        "protein": 3,
+        "perGrams": 148
+    },
+
+    {
+        "item": "Cheddar",
+        "calories": 402,
+        "fats": 33,
+        "carbs": 1.3,
+        "protein": 25,
+        "perGrams": 100
+    },
+
+    {
+        "item": "Red Leicester",
+        "calories": 401,
+        "fats": 34,
+        "carbs": 0,
+        "protein": 25,
+        "perGrams": 100
+    },
+
+    {
+        "item": "Mozzarella",
+        "calories": 280,
+        "fats": 17,
+        "carbs": 3.1,
+        "protein": 28,
+        "perGrams": 100
+    },
+
+    {
+        "item": "White Bread",
+        "calories": 67,
+        "fats": 0.8,
+        "carbs": 12,
+        "protein": 2.2,
+        "perGrams": 25
+    },
+
+    {
+        "item": "Brown Bread",
+        "calories": 60,
+        "fats": 0.8,
+        "carbs": 12,
+        "protein": 2.2,
+        "perGrams": 24
+    },
+
+    {
+        "item": "White Rice",
+        "calories": 130,
+        "fats": 0.3,
+        "carbs": 28,
+        "protein": 2.7,
+        "perGrams": 100
+    },
+
+    {
+        "item": "Brown Rice",
+        "calories": 111,
+        "fats": 0.9,
+        "carbs": 23,
+        "protein": 2.6,
+        "perGrams": 100
+    },
+
+    {
+        "item": "Pasta",
+        "calories": 146,
+        "fats": 0.4,
+        "carbs": 33,
+        "protein": 4.8,
+        "perGrams": 100
+    }
+]
