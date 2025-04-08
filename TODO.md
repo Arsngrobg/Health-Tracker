@@ -3,9 +3,9 @@ This list is a marker to determine what the Health Tracker should have as a mini
 
 ## Database Backend & User Login
  - [x] Setup Node Enviroment
- - [ ] Setup Database Environment
- - [ ] User & Login Auth
- - [ ] Login Sanitization/Invalid Details Check
+ - [x] Setup Database Environment
+ - [x] User & Login Auth
+ - [x] Login Sanitization/Invalid Details Check
 
 ## User Food/Drink/Exercise Health
  - [ ] Create Default Set of Food & Drink

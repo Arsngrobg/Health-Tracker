@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/form.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/navigation.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <script src="js/login.js" defer></script>
+    <title>Health Tracker</title>
+</head>
+<body>
+<%- include('../common/navigation.ejs') %>
+<main>
+    <form method="POST" id="form">
+        <fieldset>
+            <legend>
+                <%= login.title %>
+                <i class="fa-regular fa-message"></i>
+            </legend>
+            <p><%= login.warning %></p>
+            <label>
+                <%= login.identifier %>
+                <input id="identifier" type="text" name="identifier" placeholder="<%= login.identifierPlaceholder %>" required>
+            </label>
+            <label>
+                <%= login.password %>
+                <input id="password" type="password" name="password" placeholder="<%= login.passwordPlaceholder %>" required>
+            </label>
+            <button id="submit">
+                <%= login.submit %>
+                <i class="fa-regular fa-paper-plane"></i>
+            </button>
+        </fieldset>
+    </form>
+</main>
+<%- include('../common/footer.ejs') %>
+</body>
+</html>

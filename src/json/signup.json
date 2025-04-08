@@ -1,0 +1,15 @@
+{
+    "title" : "Sign Up",
+    "warning" : "Required fields are marked with an asterisk (*)",
+    "username" : "Username (*):",
+    "usernamePlaceholder" : "Enter username",
+    "forename" : "Forename (*):",
+    "forenamePlaceholder" : "Enter forename",
+    "surname" : "Surname (*):",
+    "surnamePlaceholder" : "Enter surname",
+    "email" : "Email (*):",
+    "emailPlaceholder" : "Enter email",
+    "password" : "Password (*):",
+    "passwordPlaceholder" : "Enter password",
+    "submit" : "Sign Up"
+}
