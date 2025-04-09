@@ -3,7 +3,7 @@ const db = require('../config/db');
 // Password should be hashed before insertion
 const createUser = async(username, forename, surname, email, password) => {
     try {
-        db.execute('INSERT INTO User (Username, Forename, Surname, Email, Password) VALUES (?, ?, ?, ?, ?)', 
+        await db.execute('INSERT INTO User (Username, Forename, Surname, Email, Password) VALUES (?, ?, ?, ?, ?)', 
             [username, forename, surname, email, password]);
     }
     catch (err) {
@@ -13,7 +13,7 @@ const createUser = async(username, forename, surname, email, password) => {
 
 const deleteUser = async(username) => {
     try {
-        db.execute('DELETE FROM User WHERE Username = ?', [username]);
+        await db.execute('DELETE FROM User WHERE Username = ?', [username]);
     }
     catch (err) {
         throw err;
@@ -32,7 +32,7 @@ const findUser = async(identifier) => {
 // For password reset
 const changePassword = async(identifier, password) => {
     try {
-        db.execute('UPDATE User SET password = ? WHERE Username = ? OR Email = ?', [password, identifier, identifier]);
+        await db.execute('UPDATE User SET password = ? WHERE Username = ? OR Email = ?', [password, identifier, identifier]);
     }
     catch (err) {
         throw err;

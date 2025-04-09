@@ -5,5 +5,6 @@
     "identifierPlaceholder" : "Enter username or email",
     "password" : "Password (*):",
     "passwordPlaceholder" : "Enter password",
+    "forgotPassword" : "Forgotten password?",
     "submit" : "Log In"
 }

@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/navigation.css">
     <link rel="stylesheet" href="/css/footer.css">
-    <script src="js/signup.js" defer></script>
     <title>Health Tracker</title>
 </head>
 <body>
@@ -19,6 +18,9 @@
                 <i class="fa-regular fa-message"></i>
             </legend>
             <p><%= signup.warning %></p>
+            <% if (typeof errorMessage !== 'undefined') { %>
+                <p class="error"><%= errorMessage %></p>
+            <% } %>
             <label>
                 <%= signup.username %>
                 <input id="username" type="text" name="username" placeholder="<%= signup.usernamePlaceholder %>" required>
