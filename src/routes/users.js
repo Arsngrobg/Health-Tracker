@@ -13,6 +13,15 @@ router.get('/login', (req, res) => {
     });
 });
 
+router.get('/logout', (req, res) => {
+    req.session.destroy((err) => {
+        if(err) {
+            throw err;
+        }
+        res.redirect('/users/login');
+    });
+});
+
 router.get('/signup', (req, res) => {
     res.render('../src/views/pages/signup', {
         signup: signup

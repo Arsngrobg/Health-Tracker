@@ -1,1 +1,10 @@
-{}
+{
+    "mainAnchor1" : "Home",
+    "mainAnchor2" : "Diet",
+    "mainAnchor3" : "Exercise",
+    "mainAnchor4" : "Tracking",
+    "mainAnchor5" : "Groups",
+    "mainAnchor6" : "Profile",
+    "mainAnchor7" : "Log In",
+    "mainAnchor8" : "Sign Up"
+}

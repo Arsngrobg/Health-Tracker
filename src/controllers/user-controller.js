@@ -23,7 +23,8 @@ exports.login = async (req, res) => {
                 errorMessage: "Invalid credentials: password incorrect"
             });
         }
-        res.send("Login successful");
+        req.session.user = user;
+        res.redirect('/');
     }
     catch (err) {
         console.log(err);
@@ -51,7 +52,7 @@ exports.signup = async (req, res) => {
         }
         const hash = crypto.createHash('md5').update(password).digest('hex');
         await userModel.createUser(username, forename, surname, email, hash);
-        res.send("Signup successful");
+        res.redirect('/login');
     }
     catch (err) {
         console.log(err);

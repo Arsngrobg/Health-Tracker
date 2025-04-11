@@ -1,0 +1,18 @@
+<header>
+    <a id="hamburger"><i class="fa-solid fa-bars"></i></a>
+    <nav>
+        <ul>
+            <li class="nav"><a href="/"><%= navigation.mainAnchor1 %></a></li>
+            <% if (loggedIn) { %>
+                <li class="nav"><a href="/diet"><%= navigation.mainAnchor2 %></a></li>
+                <li class="nav"><a href="/exercise"><%= navigation.mainAnchor3 %></a></li>
+                <li class="nav"><a href="/tracking"><%= navigation.mainAnchor4 %></a></li>
+                <li class="nav"><a href="/groups"><%= navigation.mainAnchor5 %></a></li>
+                <li class="nav"><a href="/profile"><%= navigation.mainAnchor6 %></a></li>
+            <% } else { %>
+                <li class="nav"><a href="/users/login"><%= navigation.mainAnchor7 %></a></li>
+                <li class="nav"><a href="/users/signup"><%= navigation.mainAnchor8 %></a></li>
+            <% } %> 
+        </ul>
+    </nav>
+</header>
