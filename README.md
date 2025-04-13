@@ -4,6 +4,8 @@ A health tracker web application developed using Node.js and the Express.js fram
 ## Installation
 ### Prerequisites:
 * Must have Node.js installed on your system
+* Must have a local MySQL database connection set up
+* Must have database configuration details stored in a .env file
 
 #### To initialise the project:
 ```

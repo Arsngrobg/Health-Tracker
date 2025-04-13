@@ -25,7 +25,7 @@ app.use((req, res, next) => {
     res.locals.navigation = navigation;
     res.locals.footer = footer;
     res.locals.user = req.session.user || null;
-    res.locals.loggedIn = !!req.session.user;
+    res.locals.loggedIn = req.session.user;
     next();
 });
 
