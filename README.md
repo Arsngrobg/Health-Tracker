@@ -4,18 +4,22 @@ A health tracker web application developed using Node.js and the Express.js fram
 ## Installation
 ### Prerequisites:
 * Must have Node.js installed on your system
-* Must have a local MySQL database connection set up
-* Must have database configuration details stored in a .env file
+* Must have a local/hosted MySQL database connection set up
 
 #### To initialise the project:
 ```
-npm init
+npm init -y
 ```
 
 #### To install the project dependencies:
 ```
 npm install
 ```
+
+#### Configuring MySQL
+Make sure you have installed and configured [MySQL](https://www.mysql.com) - MySQL Workbench recommended.
+Once you have set up MySQL, copy the ```DEFAULT.env``` file and rename it to ```.env``` and configure appropriately.
+Assuming the .env file is correct the application should initialize with no problem.
 
 ## Usage
 ### Starting the application:
