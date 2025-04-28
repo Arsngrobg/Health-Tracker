@@ -52,7 +52,7 @@ exports.signup = async (req, res) => {
         }
         const hash = crypto.createHash('md5').update(password).digest('hex');
         await userModel.createUser(username, forename, surname, email, hash);
-        res.redirect('/login');
+        res.redirect('/users/login');
     }
     catch (err) {
         console.log(err);
@@ -78,7 +78,7 @@ exports.resetPassword = async (req, res) => {
         else {
             const hash = crypto.createHash('md5').update(newPassword).digest('hex');
             await userModel.changePassword(identifier, hash);
-            res.send("Password reset successful");
+            res.redirect('/users/login');
         }
     }
     catch (err) {
