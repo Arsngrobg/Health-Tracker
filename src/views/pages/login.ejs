@@ -23,12 +23,12 @@
             <% } %>
             <label>
                 <%= login.identifier %>
-                <input id="identifier" type="text" name="identifier" placeholder="<%= login.identifierPlaceholder %>" required>
             </label>
+            <input id="identifier" type="text" name="identifier" placeholder="<%= login.identifierPlaceholder %>" required>
             <label>
                 <%= login.password %>
-                <input id="password" type="password" name="password" placeholder="<%= login.passwordPlaceholder %>" required>
             </label>
+            <input id="password" type="password" name="password" placeholder="<%= login.passwordPlaceholder %>" required>
             <a href="/users/resetPassword"><%= login.forgotPassword %></a>
             <button id="submit">
                 <%= login.submit %>

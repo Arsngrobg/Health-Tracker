@@ -1,0 +1,36 @@
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5rem;
+    margin-bottom: 5rem;
+    overflow: hidden;
+    border-bottom: 1px solid #00BFFF;
+}
+
+ul {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+li {
+    list-style-type: none;
+    text-align: center;
+    padding: 1rem;
+    border-radius: 5px;
+    font-size: 1.5rem;
+}
+
+li:hover {
+    cursor: pointer;
+    transition-duration: 0.2s;
+    font-size: 1.6rem;
+}
+
+.nav a {
+    text-decoration: none;
+    text-align: center;
+    color: #00BFFF;
+    font-weight: bold;
+}
