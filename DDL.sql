@@ -1,92 +1,93 @@
 CREATE DATABASE IF NOT EXISTS Operation_Health;
 USE Operation_Health;
 
+-- User table definition
 CREATE TABLE IF NOT EXISTS User (
-UserID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    Username VARCHAR(32) NOT NULL UNIQUE,
-    Forename VARCHAR(64) NOT NULL,
-    Surname VARCHAR(64) NOT NULL,
-    Email VARCHAR(128) NOT NULL UNIQUE,
+	UserID   BIGINT       NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    Username VARCHAR(32)  NOT NULL UNIQUE,
+    Forename VARCHAR(64)  NOT NULL,
+    Surname  VARCHAR(64)  NOT NULL,
+    Email    VARCHAR(128) NOT NULL UNIQUE,
     Password VARCHAR(128) NOT NULL,
-    Height INT,
-    Weight INT
+    Height   INT,
+    Weight   INT
 );
 
+-- UserGroup table definition
 CREATE TABLE IF NOT EXISTS UserGroup (
-GroupID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    GroupName VARCHAR(32) NOT NULL
+	GroupID   BIGINT      NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    GroupName VARCHAR(32) NOT NULL,
+    UserCount INT         NOT NULL DEFAULT 1
 );
 
+-- UserGroupMembership table definition
 CREATE TABLE IF NOT EXISTS UserGroupMembership (
-    GroupID INT NOT NULL,
-    UserID INT NOT NULL,
-    Role ENUM("Member", "Admin") DEFAULT ("Member"),
+    GroupID BIGINT NOT NULL,
+    UserID  BIGINT NOT NULL,
+    Role    ENUM("Member", "Admin") NOT NULL DEFAULT ("Member"),
     PRIMARY KEY (GroupID, UserID),
     FOREIGN KEY (GroupID) REFERENCES UserGroup(GroupID) ON DELETE CASCADE,
-    FOREIGN KEY (UserID) REFERENCES User(UserID) ON DELETE CASCADE
+    FOREIGN KEY (UserID)  REFERENCES User(UserID)       ON DELETE CASCADE
 );
 
-
+-- Goal table definition
 CREATE TABLE IF NOT EXISTS Goal (
-GoalID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    UserID INT NOT NULL,
+    GoalID   BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    UserID   BIGINT NOT NULL,
     Duration INT,
     Calories INT,
-    Weight INT,
-    Date date NOT NULL DEFAULT (CURDATE()),
+    Weight   INT,
+    Date     DATE   NOT NULL DEFAULT (CURDATE()),
     FOREIGN KEY (UserID) REFERENCES User(UserID) ON DELETE CASCADE
 );
 
+-- Consumable definition (best word I could think for combining the Food & Drink tables)
+-- Nutrition values are per 100g (if Food) or per 100ml (if Drink) & rounded to 1 d.p
+CREATE TABLE IF NOT EXISTS Consumable (
+	ConsumableID  BIGINT                NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    Type          ENUM('Food', 'Drink') NOT NULL,
+    Energy        INT,
+    Fat           FLOAT(1),
+    Saturates     FLOAT(1),
+    Carbohydrates FLOAT(1),
+    Sugars        FLOAT(1),
+    Fibre         FLOAT(1),
+    CONSTRAINT C_Saturates CHECK ( Saturates <= Fat ),
+    CONSTRAINT C_Sugars    CHECK ( Sugars    <= Carbohydrates )
+);
+
+-- Meal table definition
 CREATE TABLE IF NOT EXISTS Meal (
-MealID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    Name varchar(32)
+    MealID BIGINT      NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    Name   VARCHAR(32) NOT NULL DEFAULT 'Unamed Meal'
 );
 
-CREATE TABLE IF NOT EXISTS Food (
-FoodID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    Name VARCHAR(32) NOT NULL,
-    Calories INT NOT NULL
+-- MealConsumable table definition
+CREATE TABLE IF NOT EXISTS MealConsumable (
+	MealID       BIGINT NOT NULL,
+    ConsumableID BIGINT NOT NULL,
+    PRIMARY KEY (MealID, ConsumableID),
+    FOREIGN KEY (MealID)       REFERENCES Meal(MealID)             ON DELETE CASCADE,
+    FOREIGN KEY (ConsumableID) REFERENCES Consumable(ConsumableID) ON DELETE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS Drink (
-DrinkID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    Name VARCHAR(32) NOT NULL,
-    Calories INT NOT NULL
-);
-
-CREATE TABLE IF NOT EXISTS MealFood (
-    MealID INT NOT NULL,
-    FoodID INT NOT NULL,
-    Quantity INT DEFAULT 1,
-    PRIMARY KEY (MealID, FoodID),
-    FOREIGN KEY (MealID) REFERENCES Meal(MealID) ON DELETE CASCADE,
-    FOREIGN KEY (FoodID) REFERENCES Food(FoodID) ON DELETE CASCADE
-);
-
-CREATE TABLE IF NOT EXISTS MealDrink (
-    MealID INT NOT NULL,
-    DrinkID INT NOT NULL,
-    Quantity INT DEFAULT 1,
-    PRIMARY KEY (MealID, DrinkID),
-    FOREIGN KEY (MealID) REFERENCES Meal(MealID) ON DELETE CASCADE,
-    FOREIGN KEY (DrinkID) REFERENCES Drink(DrinkID) ON DELETE CASCADE
-);
-
+-- DietEntry table definition
 CREATE TABLE IF NOT EXISTS DietEntry (
-EntryID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    UserID INT NOT NULL,
-    MealID INT NOT NULL,
-    Date date NOT NULL DEFAULT (CURDATE()),
+    EntryID BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    UserID  BIGINT NOT NULL,
+    MealID  BIGINT NOT NULL,
+    Date    DATE   NOT NULL DEFAULT (CURDATE()),
     FOREIGN KEY (UserID) REFERENCES User(UserID) ON DELETE CASCADE,
     FOREIGN KEY (MealID) REFERENCES Meal(MealID) ON DELETE CASCADE
 );
 
+-- ExerciseEntry table definition
 CREATE TABLE IF NOT EXISTS ExerciseEntry (
-EntryID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    Activity ENUM("Running", "Walking", "Swimming", "Cycling", "Squats", "Pushups", "Situps"),
-    UserID INT NOT NULL,
+	EntryID  BIGINT                                                                           NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    Activity ENUM('Running', 'Walking', 'Swimming', 'Cycling', 'Squats', 'Pushups', 'Situps') NOT NULL,
+    UserID   BIGINT                                                                           NOT NULL,
     Duration INT,
     Distance INT,
     Calories INT,
-    Date date NOT NULL DEFAULT (CURDATE())
+    Date     DATE NOT NULL DEFAULT (CURDATE())
 );
