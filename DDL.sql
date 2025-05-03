@@ -35,6 +35,7 @@ CREATE TABLE IF NOT EXISTS Goal (
     GoalID   BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     UserID   BIGINT NOT NULL,
     Duration INT,
+    Distance INT,
     Calories INT,
     Weight   INT,
     Date     DATE   NOT NULL DEFAULT (CURDATE()),
@@ -45,6 +46,7 @@ CREATE TABLE IF NOT EXISTS Goal (
 -- Nutrition values are per 100g (if Food) or per 100ml (if Drink) & rounded to 1 d.p
 CREATE TABLE IF NOT EXISTS Consumable (
 	ConsumableID  BIGINT                NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    Name		  VARCHAR(32)			NOT NULL,
     Type          ENUM('Food', 'Drink') NOT NULL,
     Energy        INT,
     Fat           FLOAT(1),
