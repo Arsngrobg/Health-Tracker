@@ -3,14 +3,16 @@ USE Operation_Health;
 
 -- User table definition
 CREATE TABLE IF NOT EXISTS User (
-	UserID   BIGINT       NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    Username VARCHAR(32)  NOT NULL UNIQUE,
-    Forename VARCHAR(64)  NOT NULL,
-    Surname  VARCHAR(64)  NOT NULL,
-    Email    VARCHAR(128) NOT NULL UNIQUE,
-    Password VARCHAR(128) NOT NULL,
-    Height   INT,
-    Weight   INT
+	UserID     BIGINT       NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    Username   VARCHAR(32)  NOT NULL UNIQUE,
+    Forename   VARCHAR(64)  NOT NULL,
+    Surname    VARCHAR(64)  NOT NULL,
+    Email      VARCHAR(128) NOT NULL UNIQUE,
+    DOB		   DATE,
+    Password   VARCHAR(128) NOT NULL,
+    Height     INT,
+    Weight     INT,
+    DateJoined DATE			NOT NULL DEFAULT (CURDATE())
 );
 
 -- UserGroup table definition

@@ -11,6 +11,21 @@
     <body>
         <%- include('../common/navigation.ejs') %>
         <main>
+            <section>
+                <p>Forename: <%= user.Forename %></p>
+                <p>Surname: <%= user.Surname %></p>
+                <p>Age: <%= age %></p>
+                <p>Member since: 
+                    <script>
+                        const dateJoined = new Date("<%= user.DateJoined %>");
+                        const day = String(dateJoined.getUTCDate()).padStart(2, '0');
+                        const month = String(dateJoined.getUTCMonth() + 1).padStart(2, '0');
+                        const year = dateJoined.getUTCFullYear();
+                        const formattedDate = `${day}-${month}-${year}`;
+                        document.write(formattedDate);
+                    </script>
+                </p>
+            </section>
             <form action="/users/logout">
                 <input type="submit" value="Log out"/>
             </form>
