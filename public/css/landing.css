@@ -51,7 +51,7 @@ input {
 }
 
 input:hover {
-    background-color: whitesmoke;
+    background-color: white;
     border-color: #014f86;
     transition-duration: 0.2s;
     color: #014f86;

@@ -1,9 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const dietController = require('../controllers/diet-controller');
-const foodController = require('../controllers/food-controller');
-const drinkController = require('../controllers/drink-controller');
-const mealController = require('../controllers/drink-controller');
+const consumableController = require('../controllers/consumable-controller');
+const mealController = require('../controllers/meal-controller');
 
 // Importing JSON files to access page content
 const diet = require('../json/diet.json');

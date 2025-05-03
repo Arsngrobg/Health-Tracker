@@ -12,18 +12,18 @@
         <%- include('../common/navigation.ejs') %>
         <main>
             <section>
-                <h1>Operation: Health</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <h1><%= landing.title %></h1>
+                <p><%= landing.description %></p>
                 <ul>
-                    <li>Lorem ipsum</li>
-                    <li>Lorem ipsum</li>
-                    <li>Lorem ipsum</li>
+                    <li><%= landing.bullet1 %></li>
+                    <li><%= landing.bullet2 %></li>
+                    <li><%= landing.bullet3 %></li>
                 </ul>
                 <form action="/users/login">
-                    <input type="submit" value="Get started"/>
+                    <input type="submit" value="<%= landing.submit %>"/>
                 </form>
             </section>
-            <img src="/images/landing.png" alt="landing">
+            <img src=<%= landing.image %> alt="landing">
         </main>
         <%- include('../common/footer.ejs') %>
     </body>

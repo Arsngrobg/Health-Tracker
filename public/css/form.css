@@ -13,7 +13,7 @@ form {
 fieldset {
     display: flex;
     width: 80%;
-    background-color: whitesmoke;
+    background-color: white;
     border: 0;
     flex-direction: column;
     justify-content: center;
@@ -57,7 +57,7 @@ label {
 
 input, textarea {
     padding: 0.6rem;
-    border: 1px solid white;
+    border: 1px solid #00BFFF;
     border-radius: 5px;
 }
 
@@ -86,7 +86,7 @@ input:focus, textarea:focus {
 }
 
 #submit:hover {
-    background-color: whitesmoke;
+    background-color: white;
     border-color: #00BFFF;
     transition-duration: 0.2s;
     color: #00BFFF;

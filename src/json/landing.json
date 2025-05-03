@@ -1,1 +1,9 @@
-{}
+{
+    "title" : "Operation: Health",
+    "description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "bullet1" : "Track your exercise goals",
+    "bullet2" : "Keep on top of your diet",
+    "bullet3" : "Join groups and work together with your friends",
+    "submit" : "Get started",
+    "image" : "/images/landing.png"
+}
