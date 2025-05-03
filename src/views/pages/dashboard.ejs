@@ -2,15 +2,18 @@
 <html lang="en">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="/css/index.css">
+        <link rel="stylesheet" href="/css/dashboard.css">
         <link rel="stylesheet" href="/css/main.css">
         <link rel="stylesheet" href="/css/navigation.css">
         <link rel="stylesheet" href="/css/footer.css">
-        <title>Health Tracker</title>
+        <title>Operation: Health</title>
     </head>
     <body>
         <%- include('../common/navigation.ejs') %>
         <main>
+            <section>
+                <h1>Welcome to your dashboard, <%= user.Username %></h1>
+            </section>
         </main>
         <%- include('../common/footer.ejs') %>
     </body>

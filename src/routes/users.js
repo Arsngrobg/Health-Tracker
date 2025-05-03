@@ -18,7 +18,7 @@ router.get('/logout', (req, res) => {
         if(err) {
             throw err;
         }
-        res.redirect('/users/login');
+        res.redirect('/');
     });
 });
 

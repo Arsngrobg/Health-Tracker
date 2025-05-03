@@ -1,0 +1,69 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+h1 {
+    color: #014f86;
+    margin: 0 0 1rem 0;
+    font-size: 3rem;
+}
+
+section {
+    width: 50%;
+    padding: 0;
+}
+
+p {
+    font-size: 1.6rem;
+}
+
+img {
+    border-radius: 5px;
+    width: 30%;
+}
+
+main {
+    display: flex;  
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 75vh;
+    gap: 5%;
+}
+
+form {
+    margin: 1rem 0 0 0;
+}
+
+input {
+    align-self: center;
+    color: white;
+    background-color: #014f86;
+    width: 30%;
+    min-height: 2rem;
+    padding: 0.8rem;
+    border: 1px solid #014f86;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    font-weight: bold; 
+}
+
+input:hover {
+    background-color: whitesmoke;
+    border-color: #014f86;
+    transition-duration: 0.2s;
+    color: #014f86;
+    cursor: pointer;
+}
+
+section ul {
+    margin: 1rem 0 0 0;
+    font-size: 1.5rem;
+    padding: 0 0 0 1.5rem;
+}
+
+li::marker {
+    color: #014f86;
+}

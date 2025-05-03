@@ -1,0 +1,15 @@
+h1 {
+    color: #014f86;
+    font-size: 2.5rem;
+}
+
+section {
+    margin: 0 20%;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
