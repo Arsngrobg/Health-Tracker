@@ -37,3 +37,4 @@ app.use('/exercise', require('./src/routes/exercise'));
 app.use('/tracking', require('./src/routes/tracking'));
 app.use('/groups', require('./src/routes/groups'));
 app.use('/profile', require('./src/routes/profile'));
+app.use('/settings', require('./src/routes/settings'));

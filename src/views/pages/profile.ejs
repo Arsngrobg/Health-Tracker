@@ -11,7 +11,15 @@
     <body>
         <%- include('../common/navigation.ejs') %>
         <main>
-            <section>
+            <%- include('../common/settings-bar.ejs') %>
+            <section id="profile">
+                <div id="profile-header">
+                    <h1>Profile</h1>
+                    <form action="/profile/edit" method="GET" id="edit-profile">
+                        <input type="submit" class="button" value="Edit profile"/>
+                    </form>
+                </div>
+                <p>Username: <%= user.Username %></p>
                 <p>Forename: <%= user.Forename %></p>
                 <p>Surname: <%= user.Surname %></p>
                 <p>Age: <%= age %></p>
@@ -26,9 +34,12 @@
                     </script>
                 </p>
             </section>
-            <form action="/users/logout">
-                <input type="submit" value="Log out"/>
-            </form>
+            <section id="activity">
+                <h1>Activity</h1>
+                <p>Logged _ meals today</p>
+                <p>Completed _ workouts this week</p>
+                <p>Tracked weight yesterday: _ kg</p>
+            </section>
         </main>
         <%- include('../common/footer.ejs') %>
     </body>

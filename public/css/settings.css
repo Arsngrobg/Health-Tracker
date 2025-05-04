@@ -1,9 +1,8 @@
 main {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 5%;
-    margin: 0 5%;
-    align-items: start;
+    display: flex;
+    flex-direction: row;
+    margin: 0 5% 0 5%;
+    gap: 10%;
 }
 
 h1 {
@@ -27,35 +26,18 @@ p a:hover {
 }
 
 aside {
-    grid-column: 1 / 2;
+    margin: 0 5% 0 0;
+    padding: 0 5% 0 0;
     border-right: solid 1px #D3D3D3;
-    padding: 0 5vw 0 0;
-    align-self: stretch
 }
 
 section {
     justify-content: center;
 }
 
-#profile {
-    grid-column: 2 / 4;
-    border-right: solid 1px #D3D3D3;
-    padding: 0 5vw 0 0;
-    align-self: stretch
-}
-
-#activity {
-    grid-column: 4 / 5;
-}
-
-#profile-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
 #edit-profile {
-    margin: 0;
+    margin-left: auto;
+    align-self: start;
 }
 
 .button {

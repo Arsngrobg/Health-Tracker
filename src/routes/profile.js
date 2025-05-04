@@ -37,4 +37,24 @@ router.get('/', (req, res) => {
     }
 });
 
+router.get('/edit', (req, res) => {
+    if(!res.locals.loggedIn) {
+        res.redirect('/users/login');
+    }
+    else {
+        let age = null;
+        if(res.locals.user.DOB != null) {
+            age = calculateAge(res.locals.user.DOB);
+        }
+        else {
+            age = '';
+        }
+        res.render('../src/views/pages/profile-edit', {
+            profile: profile,
+            user: res.locals.user,
+            age: age
+        });
+    }
+});
+
 module.exports = router;
