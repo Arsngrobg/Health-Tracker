@@ -8,13 +8,13 @@ header {
     border-bottom: 1px solid #00BFFF;
 }
 
-ul {
+#navBar {
     display: flex;
     align-items: center;
     gap: 1rem;
 }
 
-li {
+.nav {
     list-style-type: none;
     text-align: center;
     padding: 1rem;
@@ -22,7 +22,7 @@ li {
     font-size: 1.5rem;
 }
 
-li:hover {
+.nav:hover {
     cursor: pointer;
     transition-duration: 0.2s;
     font-size: 1.6rem;

@@ -88,4 +88,15 @@ exports.resetPassword = async (req, res) => {
             errorMessage: "Something went wrong, please try again"
         });
     }
-}
+};
+
+exports.updateDOB = async(req, res) => {
+    const userID = res.locals.user.UserID;
+    const dob = req.body.dob;
+    try {
+        await userModel.updateDOB(dob, userID);
+    }
+    catch (err) {
+        console.log(err);
+    }
+};

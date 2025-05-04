@@ -6,11 +6,40 @@
         <link rel="stylesheet" href="/css/main.css">
         <link rel="stylesheet" href="/css/navigation.css">
         <link rel="stylesheet" href="/css/footer.css">
-        <title>Health Tracker</title>
+        <title>Operation: Health</title>
     </head>
     <body>
         <%- include('../common/navigation.ejs') %>
         <main>
+            <%- include('../common/settings-bar.ejs') %>
+            <section id="profile">
+                <div id="profile-header">
+                    <h1>Profile</h1>
+                    <form action="/profile/edit" method="GET" id="edit-profile">
+                        <input type="submit" class="button" value="Edit profile"/>
+                    </form>
+                </div>
+                <p>Username: <%= user.Username %></p>
+                <p>Forename: <%= user.Forename %></p>
+                <p>Surname: <%= user.Surname %></p>
+                <p>Age: <%= age %></p>
+                <p>Member since: 
+                    <script>
+                        const dateJoined = new Date("<%= user.DateJoined %>");
+                        const day = String(dateJoined.getUTCDate()).padStart(2, '0');
+                        const month = String(dateJoined.getUTCMonth() + 1).padStart(2, '0');
+                        const year = dateJoined.getUTCFullYear();
+                        const formattedDate = `${day}-${month}-${year}`;
+                        document.write(formattedDate);
+                    </script>
+                </p>
+            </section>
+            <section id="activity">
+                <h1>Activity</h1>
+                <p>Logged _ meals today</p>
+                <p>Completed _ workouts this week</p>
+                <p>Tracked weight yesterday: _ kg</p>
+            </section>
         </main>
         <%- include('../common/footer.ejs') %>
     </body>

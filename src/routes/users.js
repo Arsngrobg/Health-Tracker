@@ -18,7 +18,7 @@ router.get('/logout', (req, res) => {
         if(err) {
             throw err;
         }
-        res.redirect('/users/login');
+        res.redirect('/');
     });
 });
 
@@ -37,5 +37,6 @@ router.get('/resetPassword', (req, res) => {
 router.post('/login', userController.login);
 router.post('/signup', userController.signup);
 router.post('/resetPassword', userController.resetPassword);
+router.post('/updateDOB', userController.updateDOB);
 
 module.exports = router;

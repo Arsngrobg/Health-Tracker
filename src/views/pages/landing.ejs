@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/css/landing.css">
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/navigation.css">
+        <link rel="stylesheet" href="/css/footer.css">
+        <title>Operation: Health</title>
+    </head>
+    <body>
+        <%- include('../common/navigation.ejs') %>
+        <main>
+            <section>
+                <h1><%= landing.title %></h1>
+                <p><%= landing.description %></p>
+                <ul>
+                    <li><%= landing.bullet1 %></li>
+                    <li><%= landing.bullet2 %></li>
+                    <li><%= landing.bullet3 %></li>
+                </ul>
+                <form action="/users/login">
+                    <input type="submit" value="<%= landing.submit %>"/>
+                </form>
+            </section>
+            <img src=<%= landing.image %> alt="landing">
+        </main>
+        <%- include('../common/footer.ejs') %>
+    </body>
+</html>

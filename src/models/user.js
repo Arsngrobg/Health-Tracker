@@ -27,7 +27,7 @@ const findUser = async(identifier) => {
         return null;
     }
     return user[0];
-}
+};
 
 // For password reset
 const changePassword = async(identifier, password) => {
@@ -37,11 +37,23 @@ const changePassword = async(identifier, password) => {
     catch (err) {
         throw err;
     }
+};
+
+const updateDOB = async(dob, userID) => {
+    try {
+        await db.execute('UPDATE User SET DOB = ? WHERE UserID = ?', [dob, userID]);
+    }
+    catch (err) {
+        throw err;
+    }
 }
+
+
 
 module.exports = {
     createUser,
     deleteUser,
     findUser,
-    changePassword
+    changePassword,
+    updateDOB
 }
