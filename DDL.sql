@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS User (
     DOB		   DATE             NULL,
     Password   VARCHAR(128) NOT NULL,
     Height     INT              NULL CONSTRAINT CHECK ( Height >= 0 ),
-    Weight     INT              NULL CONSTRAINT CHECK ( Width  >= 0 ),
+    Weight     INT              NULL CONSTRAINT CHECK ( Weight >= 0 ),
     DateJoined DATE			NOT NULL DEFAULT (CURDATE())
 );
 
