@@ -1,3 +1,4 @@
+-- Run this file to initialize the database
 CREATE DATABASE IF NOT EXISTS Operation_Health;
 USE Operation_Health;
 
@@ -8,10 +9,10 @@ CREATE TABLE IF NOT EXISTS User (
     Forename   VARCHAR(64)  NOT NULL,
     Surname    VARCHAR(64)  NOT NULL,
     Email      VARCHAR(128) NOT NULL UNIQUE,
-    DOB		   DATE,
+    DOB		   DATE             NULL,
     Password   VARCHAR(128) NOT NULL,
-    Height     INT,
-    Weight     INT,
+    Height     INT              NULL CONSTRAINT CHECK ( Height >= 0 ),
+    Weight     INT              NULL CONSTRAINT CHECK ( Width  >= 0 ),
     DateJoined DATE			NOT NULL DEFAULT (CURDATE())
 );
 
@@ -24,8 +25,8 @@ CREATE TABLE IF NOT EXISTS UserGroup (
 
 -- UserGroupMembership table definition
 CREATE TABLE IF NOT EXISTS UserGroupMembership (
-    GroupID BIGINT NOT NULL,
-    UserID  BIGINT NOT NULL,
+    GroupID BIGINT                  NOT NULL,
+    UserID  BIGINT                  NOT NULL,
     Role    ENUM("Member", "Admin") NOT NULL DEFAULT ("Member"),
     PRIMARY KEY (GroupID, UserID),
     FOREIGN KEY (GroupID) REFERENCES UserGroup(GroupID) ON DELETE CASCADE,
