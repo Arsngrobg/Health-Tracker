@@ -1,7 +1,7 @@
 {
   "name": "health-tracker",
   "version": "1.0.0",
-  "description": "",
+  "description": "A health tracker web application developed using Node.js and the Express.js framework",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
@@ -18,5 +18,15 @@
     "express": "^4.21.2",
     "express-session": "^1.18.1",
     "mysql2": "^3.14.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Arsngrobg/Operation-Health.git"
+  },
+  "keywords": [],
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/Arsngrobg/Operation-Health/issues"
+  },
+  "homepage": "https://github.com/Arsngrobg/Operation-Health#readme"
 }
