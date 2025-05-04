@@ -4,6 +4,7 @@ const addEntry = async(activity, userID, duration, distance, calories) => {
     try {
         await db.execute('INSERT INTO ExerciseEntry (Activity, UserID, Duration, Distance, Calories) VALUES (?, ?, ?, ?, ?)',
             [activity, userID, duration, distance, calories]);
+            console.log(activity);
     }
     catch (err) {
         throw err;

@@ -17,6 +17,7 @@ router.get('/', (req, res) => {
     }
 });
 
-router.post('/addEntry', exerciseController.addEntry);
+
+router.post('/', exerciseController.addEntry);
 
 module.exports = router;

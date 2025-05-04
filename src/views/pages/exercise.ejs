@@ -11,6 +11,27 @@
     <body>
         <%- include('../common/navigation.ejs') %>
         <main>
+            <form method="POST">
+                <fieldset>
+                    <p> Enter new Exercise</p>
+                    <select name="activity" id="activity">
+                        <option value="Pushups">Pushups</option>
+                        <option value="Swimming">Swimming</option>
+                        <option value="Situps">Situps</option>
+                        <option value="Running">Running</option>
+                      </select>
+                    <p> Enter a Duriation</p>
+                    <input id="duration" type="text" name="duration" required>
+                    <p> Enter a distance</p>
+                    <input id="distance" type="text" name="distance" required>
+                    <p> Enter amount of calories</p>
+                    <input id="calories" type="text" name="calories" required>
+                    <button id="submit">
+                        Submit
+                        <i class="fa-regular fa-paper-plane"></i>
+                    </button>
+                </fieldset>
+            </form>
         </main>
         <%- include('../common/footer.ejs') %>
     </body>
