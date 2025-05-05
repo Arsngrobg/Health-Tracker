@@ -12,6 +12,35 @@
         <%- include('../common/navigation.ejs') %>
         <main>
             <%- include('../common/settings-bar.ejs') %>
+            <div id="main-wrapper">
+                <section id="settings">
+                    <form method="POST" action="/settings/account">
+                        <fieldset>
+                            <h1><%= account.title1 %></h1>
+                            <% if (typeof errorMessage !== 'undefined') { %>
+                                <p class="error"><%= errorMessage %></p>
+                            <% } %>
+                            <label>
+                                <%= account.username %>
+                            </label>
+                            <input id="username" type="text" name="username" placeholder="<%= account.usernamePlaceholder %>" value="<%= user.Username %>" required>
+                            <label>
+                                <%= account.email %> 
+                            </label>
+                            <input id="email" type="email" name="email" placeholder="<%= account.emailPlaceholder %>" value="<%= user.Email %>" required>
+                            <a href="/users/resetPassword" id="reset-password"><%= account.password %></a>
+                            <button class="button"><%= account.button1 %></button>
+                        </fieldset>
+                    </form>
+                </section>
+                <section>
+                    <h1><%= account.title2 %></h1>
+                    <p><%= account.warning %></p>
+                    <form method="POST" action="/settings/delete-account">
+                        <button class="button" id="delete"><%= account.button2 %></button>
+                    </form>
+                </section>
+            </div>
         </main>
         <%- include('../common/footer.ejs') %>
     </body>

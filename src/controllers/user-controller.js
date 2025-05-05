@@ -3,7 +3,7 @@ var crypto = require('crypto');
 
 const login = require('../json/login.json');
 const signup = require('../json/signup.json');
-const resetPassword = require('../json/reset-password.json')
+const resetPassword = require('../json/reset-password.json');
 
 exports.login = async (req, res) => {
     const identifier = req.body.identifier;
@@ -90,11 +90,73 @@ exports.resetPassword = async (req, res) => {
     }
 };
 
-exports.updateDOB = async(req, res) => {
+exports.updateUserProfile = async(req, res) => {
     const userID = res.locals.user.UserID;
+    const username = req.body.username;
+    const forename = req.body.forename;
+    const surname = req.body.surname;
     const dob = req.body.dob;
     try {
-        await userModel.updateDOB(dob, userID);
+        await userModel.updateUserProfile(userID, username, forename, surname, dob);
+        req.session.user.Username = username;
+        req.session.user.Forename = forename;
+        req.session.user.Surname = surname;
+        req.session.user.DOB = dob;
+        res.redirect('/profile');
+    }
+    catch (err) {
+        console.log(err);
+    }
+};
+
+exports.updateUserAccount = async(req, res) => {
+    const userID = res.locals.user.UserID;
+    const username = req.body.username;
+    const email = req.body.email;
+    try {
+        await userModel.updateUserAccount(userID, username, email);
+        req.session.user.Username = username;
+        req.session.user.Email = email;
+        res.redirect('/settings/account');
+    }
+    catch (err) {
+        console.log(err);
+    }
+};
+
+exports.deleteUser = async(req, res) => {
+    const userID = res.locals.user.UserID;
+    try {
+        await userModel.deleteUser(userID);
+        res.redirect('/users/logout');
+    }
+    catch (err) {
+        console.log(err);
+    }
+};
+
+exports.clearHealth = async(req, res) => {
+    const userID = res.locals.user.UserID;
+    try {
+        await userModel.clearHealth(userID);
+        req.session.user.Height = '';
+        req.session.user.Weight = '';
+        res.redirect('/settings/privacy');
+    }
+    catch (err) {
+        console.log(err);
+    }
+};
+
+exports.updateUserHealth = async (req, res) => {
+    const userID = res.locals.user.UserID;
+    const height = req.body.height;
+    const weight = req.body.weight;
+    try {
+        await userModel.updateUserHealth(userID, height, weight);
+        req.session.user.Height = height;
+        req.session.user.Weight = weight;
+        res.redirect('/settings/privacy');
     }
     catch (err) {
         console.log(err);

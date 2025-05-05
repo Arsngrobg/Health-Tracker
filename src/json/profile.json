@@ -1,1 +1,11 @@
-{}
+{
+    "title1" : "Profile",
+    "username" : "Username:",
+    "forename" : "Forename:",
+    "surname" : "Surname:",
+    "age" : "Age:",
+    "member" : "Member since:",
+    "title2" : "Activity",
+    "meals" : "Logged meals today:",
+    "workouts" : "Completed workouts this week:"
+}

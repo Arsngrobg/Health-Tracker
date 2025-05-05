@@ -1,0 +1,82 @@
+main {
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr;;
+    gap: 5%;
+    margin: 0 5%;
+    align-items: start;
+}
+
+aside {
+    grid-column: 1;
+    border-right: solid 1px #D3D3D3;
+    padding: 0 5vw 0 0;
+    align-self: stretch
+}
+
+p {
+    font-size: 2rem;
+    margin: 0 0 0.5rem 0;
+}
+
+p a {
+    color: black;
+    text-decoration: none;
+}
+
+p a:hover {
+    color: #00BFFF;
+}
+
+#edit-profile {
+    grid-column: 2 / 4;
+}
+
+fieldset {
+    display: flex;
+    flex-direction: column;
+    border: none;
+}
+
+fieldset input {
+    padding: 1rem;
+    width: 30%;
+    margin: 0 0 0.5rem 0;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+fieldset .button {
+    align-self: start;
+    margin: 0.5rem 0 0 0;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #014f86;
+    margin: 0 0 0.5rem 0;
+}
+
+label {
+    font-size: 2rem;
+    margin: 0 0 0.5rem 0;
+}
+
+.button {
+    padding: 1rem;
+    align-self: center;
+    color: white;
+    background-color: #014f86;
+    min-height: 2rem;
+    border: 1px solid #014f86;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    font-weight: bold; 
+}
+
+.button:hover {
+    cursor: pointer;
+    background-color: white;
+    border-color: #014f86;
+    transition-duration: 0.2s;
+    color: #014f86;
+}

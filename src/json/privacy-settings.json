@@ -1,0 +1,15 @@
+{
+    "title1" : "Privacy settings",
+    "subtitle" : "Update health and body information",
+    "height" : "Height (cm):",
+    "heightPlaceholder" : "Update height",
+    "weight" : "Weight (kg):",
+    "weightPlaceholder" : "Update weight",
+    "button1" : "Apply changes",
+    "title2" : "Delete health and body information",
+    "warning1" : "None of your sensitive data will be retained, and you always have the option to opt-in again.",
+    "button2" : "Delete information",
+    "title3" : "Delete diet and exercise entries",
+    "warning2" : "None of your entries will be retained.",
+    "button3" : "Delete entries"
+}
