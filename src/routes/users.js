@@ -37,6 +37,5 @@ router.get('/resetPassword', (req, res) => {
 router.post('/login', userController.login);
 router.post('/signup', userController.signup);
 router.post('/resetPassword', userController.resetPassword);
-router.post('/updateDOB', userController.updateDOB);
 
 module.exports = router;

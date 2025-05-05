@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="/css/main.css">
         <link rel="stylesheet" href="/css/navigation.css">
         <link rel="stylesheet" href="/css/footer.css">
+        <script src="/js/exercise-selection.js" defer></script>
         <title>Operation: Health</title>
     </head>
     <body>
@@ -13,26 +14,25 @@
         <main>
             <form method="POST">
                 <fieldset>
-                    <p> Enter new Exercise</p>
-                    <select name="activity" id="activity">
+                    <label>Select exercise:</label>
+                    <select name="activity" id="activity" value="">
                         <option value="Pushups">Pushups</option>
                         <option value="Swimming">Swimming</option>
                         <option value="Situps">Situps</option>
                         <option value="Running">Running</option>
                       </select>
-                    <p> Enter a Duriation</p>
-                    <input id="duration" type="text" name="duration" required>
-                    <p> Enter a distance</p>
-                    <input id="distance" type="text" name="distance" required>
-                    <p> Enter amount of calories</p>
-                    <input id="calories" type="text" name="calories" required>
+                    <label>Enter duration:</label>
+                    <input id="duration" type="text" name="duration">
+                    <label id="distance-label">Enter distance:</label>
+                    <input id="distance" type="text" name="distance">
+                    <label>Enter amount of calories:</label>
+                    <input id="calories" type="text" name="calories">
                     <button id="submit">
                         Submit
                         <i class="fa-regular fa-paper-plane"></i>
                     </button>
                 </fieldset>
             </form>
-                
             </section>
         </main>
         <%- include('../common/footer.ejs') %>

@@ -1,8 +1,8 @@
 <aside>
-    <h1>Settings</h1>
-    <p><a href="/settings/account">Account settings</a></p>
-    <p><a href="/settings/privacy">Privacy settings</a></p>
+    <h1><%= settings.title %></h1>
+    <p><a href="/settings/account"><%= settings.account %></a></p>
+    <p><a href="/settings/privacy"><%= settings.privacy %></a></p>
     <form action="/users/logout">
-        <input type="submit" class="button" value="Log out"/>
+        <input type="submit" class="button" value="<%= settings.button %>"/>
     </form>
   </aside>

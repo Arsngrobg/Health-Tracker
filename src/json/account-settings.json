@@ -1,0 +1,12 @@
+{
+    "title1" : "Account settings",
+    "username" : "Username:",
+    "usernamePlaceholder" : "Change username",
+    "email" : "Email:",
+    "emailPlaceholder" : "Change email",
+    "password" : "Change password",
+    "button1" : "Apply changes",
+    "title2" : "Delete account",
+    "warning" : "Once you delete your account, there is no going back. Please be certain.",
+    "button2" : "Delete account"
+}

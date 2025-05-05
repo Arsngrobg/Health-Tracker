@@ -1,9 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/user-controller');
+const dietController = require('../controllers/diet-controller');
+const exerciseController = require('../controllers/exercise-controller');
 
 // Importing JSON files to access page content
 const profile = require('../json/profile.json');
+const edit = require('../json/profile-edit.json');
 
 function calculateAge(dobString) {
     const dob = new Date(dobString);
@@ -17,7 +20,15 @@ function calculateAge(dobString) {
     return age;
 };
 
-router.get('/', (req, res) => {
+function formatDate(date) {
+    const formatted = new Date(date);
+    const year = formatted.getFullYear();
+    const month = (formatted.getMonth() + 1).toString().padStart(2, '0');
+    const day = formatted.getDate().toString().padStart(2, '0');
+    return `${year}-${month}-${day}`;
+};
+
+router.get('/', async (req, res) => {
     if(!res.locals.loggedIn) {
         res.redirect('/users/login');
     }
@@ -29,10 +40,14 @@ router.get('/', (req, res) => {
         else {
             age = '';
         }
+        //const workouts = await exerciseController.weeklyWorkouts(req, res);
+        //const meals = await dietController.mealsToday(req, res);
+        const dateJoined = res.locals.user.DateJoined ? formatDate(res.locals.user.DateJoined) : '';
         res.render('../src/views/pages/profile', {
             profile: profile,
             user: res.locals.user,
-            age: age
+            age: age,
+            dateJoined: dateJoined
         });
     }
 });
@@ -42,19 +57,15 @@ router.get('/edit', (req, res) => {
         res.redirect('/users/login');
     }
     else {
-        let age = null;
-        if(res.locals.user.DOB != null) {
-            age = calculateAge(res.locals.user.DOB);
-        }
-        else {
-            age = '';
-        }
+        const dob = res.locals.user.DOB ? formatDate(res.locals.user.DOB) : ''; // Formatting so it doesn't decrement by a day based on timezone
         res.render('../src/views/pages/profile-edit', {
-            profile: profile,
+            edit: edit,
             user: res.locals.user,
-            age: age
+            dob: dob
         });
     }
 });
+
+router.post('/edit', userController.updateUserProfile);
 
 module.exports = router;
