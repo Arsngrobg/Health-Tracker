@@ -1,0 +1,95 @@
+
+form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #00BFFF;
+    flex-direction: column;
+    height: 100%;
+    border: 1px solid #00BFFF;
+    margin: 0 30% 0 30%;
+    border-radius: 5px;
+}
+
+fieldset {
+    display: flex;
+    width: 80%;
+    background-color: white;
+    border: 0;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+fieldset p {
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.error {
+    padding: 0.5rem 0;
+    font-weight: normal;
+}
+
+fieldset a {
+    padding: 0.5rem 0;
+    text-decoration: none;
+    color: #00BFFF;
+    text-decoration: underline;
+}
+
+fieldset a:hover {
+    cursor: pointer;
+    font-weight: bold;
+    transition-duration: 0.2;
+}
+
+legend {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 1rem 0 0.5rem 0;
+}
+
+label {
+    display: block;
+    width: 100%;
+    padding: 1rem 0 0.5rem 0;
+} 
+
+input, textarea {
+    padding: 0.6rem;
+    border: 1px solid #00BFFF;
+    border-radius: 5px;
+}
+
+input:hover, textarea:hover {
+    border-color: #00BFFF;
+}
+
+input:focus, textarea:focus {
+    background-color: white;
+    border-color: #00BFFF;
+    outline: 1px solid #00BFFF;
+}
+
+#submit {
+    align-self: center;
+    color: white;
+    margin: 2rem 1rem;
+    background-color: #00BFFF;
+    width: 30%;
+    min-height: 2rem;
+    padding: 0.8rem;
+    border: 1px solid #00BFFF;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+#submit:hover {
+    background-color: white;
+    border-color: #00BFFF;
+    transition-duration: 0.2s;
+    color: #00BFFF;
+    cursor: pointer;
+}

@@ -57,6 +57,7 @@ CREATE TABLE IF NOT EXISTS Consumable (
     Carbohydrates FLOAT(1),
     Sugars        FLOAT(1),
     Fibre         FLOAT(1),
+    Protein       FLOAT(1),
     CONSTRAINT C_Saturates CHECK ( Saturates <= Fat ),
     CONSTRAINT C_Sugars    CHECK ( Sugars    <= Carbohydrates )
 );

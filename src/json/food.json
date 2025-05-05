@@ -5,6 +5,9 @@
         "fats": 3.6,
         "carbs": 0,
         "protein": 31,
+        "fibre": 0,
+        "saturates": 1,
+        "sugar": 0,
         "perGrams": 100
     },
 
