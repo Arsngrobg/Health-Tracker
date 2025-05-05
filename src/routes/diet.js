@@ -18,6 +18,40 @@ router.get('/', (req, res) => {
     }
 });
 
+router.get('/consumable', (req, res) => {
+    if(!res.locals.loggedIn) {
+        res.redirect('/users/login');
+    }
+    else {
+        res.render('../src/views/pages/consumable', {
+            diet: diet
+        });
+    }
+});
+
+router.get('/dietentry', (req, res) => {
+    if(!res.locals.loggedIn) {
+        res.redirect('/users/login');
+    }
+    else {
+        res.render('../src/views/pages/dietentry', {
+            diet: diet
+        });
+    }
+});
+
+router.get('/meal', (req, res) => {
+    if(!res.locals.loggedIn) {
+        res.redirect('/users/login');
+    }
+    else {
+        res.render('../src/views/pages/meal', {
+            diet: diet
+        });
+    }
+});
+
+
 router.post('/', consumableController.addEntry);
 router.post('/', mealController.addEntry);
 // router.post('/', dietController.addEntry);
