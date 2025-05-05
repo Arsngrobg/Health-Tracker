@@ -2,10 +2,10 @@ form {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #00BFFF;
+    color: #014f86;
     flex-direction: column;
     height: 100%;
-    border: 1px solid #00BFFF;
+    border: 1px solid #014f86;
     margin: 0 30% 0 30%;
     border-radius: 5px;
 }
@@ -57,7 +57,7 @@ label {
 
 input, textarea {
     padding: 0.6rem;
-    border: 1px solid #00BFFF;
+    border: 1px solid #014f86;
     border-radius: 5px;
 }
 
@@ -75,11 +75,11 @@ input:focus, textarea:focus {
     align-self: center;
     color: white;
     margin: 2rem 1rem;
-    background-color: #00BFFF;
+    background-color: #014f86;
     width: 30%;
     min-height: 2rem;
     padding: 0.8rem;
-    border: 1px solid #00BFFF;
+    border: 1px solid #014f86;
     border-radius: 5px;
     font-size: 1.5rem;
     font-weight: bold;
@@ -87,8 +87,8 @@ input:focus, textarea:focus {
 
 #submit:hover {
     background-color: white;
-    border-color: #00BFFF;
+    border-color: #014f86;
     transition-duration: 0.2s;
-    color: #00BFFF;
+    color: #014f86;
     cursor: pointer;
 }

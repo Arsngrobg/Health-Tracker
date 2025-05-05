@@ -11,9 +11,9 @@ const createUser = async(username, forename, surname, email, password) => {
     }
 };
 
-const deleteUser = async(username) => {
+const deleteUser = async(userID) => {
     try {
-        await db.execute('DELETE FROM User WHERE Username = ?', [username]);
+        await db.execute('DELETE FROM User WHERE UserID = ?', [userID]);
     }
     catch (err) {
         throw err;
@@ -39,21 +39,49 @@ const changePassword = async(identifier, password) => {
     }
 };
 
-const updateDOB = async(dob, userID) => {
+const updateUserProfile = async(userID, username, forename, surname, dob) => {
     try {
-        await db.execute('UPDATE User SET DOB = ? WHERE UserID = ?', [dob, userID]);
+        await db.execute('UPDATE User SET Username = ?, Forename = ?, Surname = ?, DOB = ? WHERE UserID = ?', [username, forename, surname, dob, userID]);
     }
     catch (err) {
         throw err;
     }
-}
+};
 
+const updateUserAccount = async(userID, username, email) => {
+    try {
+        await db.execute('UPDATE User SET Username = ?, Email = ? WHERE UserID = ?', [username, email, userID]);
+    }
+    catch (err) {
+        throw err;
+    }
+};
 
+const clearHealth = async(userID) => {
+    try {
+        await db.execute('UPDATE User SET Height = ?, Weight = ? WHERE UserID = ?', ['', '', userID]);
+    }
+    catch (err) {
+        throw err;
+    }
+};
+
+const updateUserHealth = async(userID, weight, height) => {
+    try {
+        await db.execute('UPDATE User SET Height = ?, Weight = ? WHERE UserID = ?', [userID, weight, height]);
+    }
+    catch (err) {
+        throw err;
+    }
+};
 
 module.exports = {
     createUser,
     deleteUser,
     findUser,
     changePassword,
-    updateDOB
-}
+    updateUserProfile,
+    updateUserAccount,
+    clearHealth,
+    updateUserHealth
+};

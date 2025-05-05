@@ -1,1 +1,11 @@
-{}
+{
+    "title" : "Edit profile",
+    "username" : "Username:",
+    "usernamePlaceholder" : "Change username",
+    "forename" : "Forename:",
+    "forenamePlaceholder" : "Change forename",
+    "surname" : "Surname:",
+    "surnamePlaceholder" : "Change surname",
+    "dob" : "Date of birth:",
+    "button" : "Apply changes"
+}

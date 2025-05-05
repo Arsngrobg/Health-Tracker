@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="/css/profile.css">
+        <link rel="stylesheet" href="/css/profile-edit.css">
         <link rel="stylesheet" href="/css/main.css">
         <link rel="stylesheet" href="/css/navigation.css">
         <link rel="stylesheet" href="/css/footer.css">
@@ -12,6 +12,36 @@
         <%- include('../common/navigation.ejs') %>
         <main>
             <%- include('../common/settings-bar.ejs') %>
+            <section id="edit-profile">
+                <form method="POST" action="/profile/edit">
+                    <fieldset>
+                        <h1><%= edit.title %></h1>
+                        <% if (typeof errorMessage !== 'undefined') { %>
+                            <p class="error"><%= errorMessage %></p>
+                        <% } %>
+                        <label>
+                            <%= edit.username %>
+                        </label>
+                        <input id="username" type="text" name="username" placeholder="<%= edit.usernamePlaceholder %>" value="<%= user.Username %>" required>
+                        <label>
+                            <%= edit.forename %>
+                        </label>
+                        <input id="forename" type="text" name="forename" placeholder="<%= edit.forenamePlaceholder %>" value="<%= user.Forename %>" required>
+                        <label>
+                            <%= edit.surname %>
+                        </label>
+                        <input id="surname" type="text" name="surname" placeholder="<%= edit.surnamePlaceholder %>" value="<%= user.Surname %>" required>
+                        <label>
+                            <%= edit.dob %>
+                        </label>
+                        <input id="dob" type="date" name="dob" value="<%= dob %>">
+                        <button class="button">
+                            <%= edit.button %>
+                            <i class="fa-regular fa-paper-plane"></i>
+                        </button>
+                    </fieldset>
+                </form>
+            </section>
         </main>
         <%- include('../common/footer.ejs') %>
     </body>

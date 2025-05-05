@@ -14,31 +14,30 @@
             <%- include('../common/settings-bar.ejs') %>
             <section id="profile">
                 <div id="profile-header">
-                    <h1>Profile</h1>
+                    <h1><%= profile.title1 %></h1>
                     <form action="/profile/edit" method="GET" id="edit-profile">
                         <input type="submit" class="button" value="Edit profile"/>
                     </form>
                 </div>
-                <p>Username: <%= user.Username %></p>
-                <p>Forename: <%= user.Forename %></p>
-                <p>Surname: <%= user.Surname %></p>
-                <p>Age: <%= age %></p>
-                <p>Member since: 
+                <p><%= profile.username %> <%= user.Username %></p>
+                <p><%= profile.forename %> <%= user.Forename %></p>
+                <p><%= profile.surname %> <%= user.Surname %></p>
+                <p><%= profile.age %> <%= age %></p>
+                <p><%= profile.member %>
                     <script>
-                        const dateJoined = new Date("<%= user.DateJoined %>");
+                        const dateJoined = new Date("<%= dateJoined %>");
                         const day = String(dateJoined.getUTCDate()).padStart(2, '0');
                         const month = String(dateJoined.getUTCMonth() + 1).padStart(2, '0');
                         const year = dateJoined.getUTCFullYear();
-                        const formattedDate = `${day}-${month}-${year}`;
+                        const formattedDate = `${day}/${month}/${year}`;
                         document.write(formattedDate);
                     </script>
                 </p>
             </section>
             <section id="activity">
-                <h1>Activity</h1>
-                <p>Logged _ meals today</p>
-                <p>Completed _ workouts this week</p>
-                <p>Tracked weight yesterday: _ kg</p>
+                <h1><%= profile.title2 %></h1>
+                <p><%= profile.meals %> WIP</p>
+                <p><%= profile.workouts %> WIP</p>
             </section>
         </main>
         <%- include('../common/footer.ejs') %>

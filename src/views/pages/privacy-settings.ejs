@@ -12,6 +12,42 @@
         <%- include('../common/navigation.ejs') %>
         <main>
             <%- include('../common/settings-bar.ejs') %>
+            <div id="main-wrapper">
+                <section id="settings">
+                    <form method="POST" action="/settings/privacy">
+                        <fieldset>
+                            <h1><%= privacy.title1 %></h1>
+                            <h2><%= privacy.subtitle %></h2>
+                            <% if (typeof errorMessage !== 'undefined') { %>
+                                <p class="error"><%= errorMessage %></p>
+                            <% } %>
+                            <label>
+                                <%= privacy.height %>
+                            </label>
+                            <input id="height" type="text" name="height" placeholder="<%= privacy.heightPlaceholder %>" value="<%= user.Height %>" required>
+                            <label>
+                                <%= privacy.weight %>
+                            </label>
+                            <input id="weight" type="text" name="weight" placeholder="<%= privacy.weightPlaceholder %>" value="<%= user.Weight %>" required>
+                            <button class="button"><%= privacy.button1 %></button>
+                        </fieldset>
+                    </form>
+                </section>
+                <section>
+                    <h1><%= privacy.title2 %></h1>
+                    <p><%= privacy.warning1 %></p>
+                    <form method="POST" action="/settings/clear-health">
+                        <button class="button" id="delete"><%= privacy.button2 %></button>
+                    </form>
+                </section>
+                <section>
+                    <h1><%= privacy.title3 %></h1>
+                    <p><%= privacy.warning2 %></p>
+                    <form method="POST" action="/settings/clear-entries">
+                        <button class="button" id="delete"><%= privacy.button3 %></button>
+                    </form>
+                </section>
+            </div>
         </main>
         <%- include('../common/footer.ejs') %>
     </body>

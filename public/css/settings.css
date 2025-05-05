@@ -1,13 +1,29 @@
 main {
-    display: flex;
-    flex-direction: row;
-    margin: 0 5% 0 5%;
-    gap: 10%;
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr;;
+    gap: 5%;
+    margin: 0 5%;
+    align-items: start;
+}
+
+#main-wrapper {
+    grid-column: 2 / 4;
 }
 
 h1 {
     font-size: 2.5rem;
     color: #014f86;
+    margin: 0 0 0.5rem 0;
+}
+
+h2 {
+    font-size: 2rem;
+    margin: 0 0 0.5rem 0;
+    font-weight: normal;
+}
+
+label {
+    font-size: 2rem;
     margin: 0 0 0.5rem 0;
 }
 
@@ -21,23 +37,51 @@ p a {
     text-decoration: none;
 }
 
+#reset-password {
+    text-decoration: underline;
+    color: #00BFFF;
+    font-size: 1.5rem;
+    margin: 0.5rem 0 0.5rem 0;
+}
+
+#reset-password:hover {
+    cursor: pointer;
+    font-weight: bold;
+    transition-duration: 0.2;
+}
+
 p a:hover {
     color: #00BFFF;
 }
 
 aside {
-    margin: 0 5% 0 0;
-    padding: 0 5% 0 0;
+    grid-column: 1;
     border-right: solid 1px #D3D3D3;
+    padding: 0 5vw 0 0;
+    align-self: stretch
 }
 
-section {
-    justify-content: center;
+#main-wrapper > section:not(:last-child) {
+    margin-bottom: 2rem;
 }
 
-#edit-profile {
-    margin-left: auto;
+fieldset{
+    display: flex;
+    flex-direction: column;
+    border: none;
+}
+
+fieldset input {
+    padding: 1rem;
+    width: 30%;
+    margin: 0 0 0.5rem 0;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+fieldset .button {
     align-self: start;
+    margin: 0.5rem 0 0 0;
 }
 
 .button {
@@ -58,4 +102,15 @@ section {
     border-color: #014f86;
     transition-duration: 0.2s;
     color: #014f86;
+}
+
+#delete {
+    color: white;
+    background-color: red;
+    border: 1px solid red;
+}
+
+#delete:hover {
+    color: red;
+    background-color: white;
 }
