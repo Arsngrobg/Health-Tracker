@@ -7,7 +7,8 @@
         "protein": 31,
         "fibre": 0,
         "saturates": 1,
-        "sugar": 0
+        "sugar": 0,
+        "perGrams": 100
     },
 
     {
@@ -18,7 +19,8 @@
         "protein": 24,
         "fibre": 0,
         "saturates": 2.3,
-        "sugar": 0
+        "sugar": 0,
+        "perGrams": 100
     },
 
     {
@@ -29,7 +31,8 @@
         "protein": 2.2,
         "fibre": 1.7,
         "saturates": 0.01,
-        "sugar": 0.3
+        "sugar": 0.3,
+        "perGrams": 100
     },
 
     {
@@ -40,7 +43,8 @@
         "protein": 25,
         "fibre": 0.6,
         "saturates": 21.1,
-        "sugar": 0.3
+        "sugar": 0.3,
+        "perGrams": 100
     },
 
     {
@@ -51,7 +55,8 @@
         "protein": 25,
         "fibre": 0,
         "saturates": 21.1,
-        "sugar": 0.1
+        "sugar": 0.1,
+        "perGrams": 100
     },
 
     {
@@ -62,7 +67,8 @@
         "protein": 28,
         "fibre": 0,
         "saturates": 13.6,
-        "sugar": 1
+        "sugar": 1,
+        "perGrams": 100
     },
 
     {
@@ -73,7 +79,8 @@
         "protein": 8.4,
         "fibre": 3,
         "saturates": 0.4,
-        "sugar": 3.8
+        "sugar": 3.8,
+        "perGrams": 100
     },
 
     {
@@ -84,7 +91,8 @@
         "protein": 6.4,
         "fibre": 6.4,
         "saturates": 0.5,
-        "sugar": 2.4
+        "sugar": 2.4,
+        "perGrams": 100
     },
 
     {
@@ -95,7 +103,8 @@
         "protein": 3.6,
         "fibre": 0.6,
         "saturates": 0.1,
-        "sugar": 0.1
+        "sugar": 0.1,
+        "perGrams": 100
     },
 
     {
@@ -106,7 +115,8 @@
         "protein": 4,
         "fibre": 2.3,
         "saturates": 0.3,
-        "sugar": 0.1
+        "sugar": 0.1,
+        "perGrams": 100
     },
 
     {
@@ -117,6 +127,7 @@
         "protein": 5.8,
         "fibre": 2.2,
         "saturates": 0.2,
-        "sugar": 1.1
+        "sugar": 1.1,
+        "perGrams": 100
     }
 ]

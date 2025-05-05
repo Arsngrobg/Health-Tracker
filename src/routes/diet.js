@@ -53,7 +53,7 @@ router.get('/meal', (req, res) => {
 
 
 router.post('/', consumableController.addEntry);
-router.post('/', mealController.addEntry);
+// router.post('/', mealController.addEntry);
 // router.post('/', dietController.addEntry);
 
 
