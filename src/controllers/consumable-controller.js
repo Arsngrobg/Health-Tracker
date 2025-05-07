@@ -1,4 +1,6 @@
 const consumableModel = require('../models/consumable');
+const fs = require('fs');
+
 
 exports.addEntry = async(req, res) => {
     const user = res.locals.user.UserID;
@@ -28,10 +30,25 @@ exports.addEntry = async(req, res) => {
 exports.getConsumable = async(req, res) => {
     const userID = res.locals.user.UserID;
     try {
-        const count = await dietModel.getConsumable(userID);
-        res.json(count);
+        const count = await consumableModel.getConsumable(userID);
+        console.log(count)
+        res.redirect('/diet');
+
+        const names = count.map(item => item.Name);
+        console.log(names[0])
+        module.exports = names
+
+        fs.writeFile('../Operation-Health/json/consumable', JSON.stringify(names, null, 2), (err) => {
+            if (err) {
+              console.error('Error writing file:', err);
+            } else {
+              console.log('consumable.json has been saved!');
+            }
+          });
     }
+
     catch (err) {
         console.log(err);
     }
 };
+

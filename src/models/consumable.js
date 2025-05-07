@@ -1,5 +1,5 @@
 const db = require('../config/db');
-
+const fs = require('fs');
 
 const addEntry = async(user, Name, Type, Amount, calories, fats, carbs, fibre, saturates, sugar, protein) => {
     try {
@@ -15,10 +15,11 @@ const addEntry = async(user, Name, Type, Amount, calories, fats, carbs, fibre, s
 
 const getConsumable = async(userID) => {
     try {
-        const [result] = await db.promise().query('SELECT * FROM Consumable WHERE UserID = ?', [userID]);
+        const [result] = await db.promise().query('SELECT Name FROM Consumable WHERE UserID = ? OR UserID IS NULL', [userID]);
         if (result.length === 0) {
             return null;
         }
+
         return result;
     }
     catch (err) {
@@ -30,4 +31,5 @@ const getConsumable = async(userID) => {
 
 module.exports = {
     addEntry,
+    getConsumable
 }
