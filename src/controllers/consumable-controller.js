@@ -17,9 +17,17 @@ exports.addEntry = async(req, res) => {
 
     try {
         await consumableModel.addEntry(user, Name, Type, Amount, calories, fats, carbs, fibre, saturates, sugar, protein);
-        return res.render('../src/views/pages/diet', {
-            errorMessage: "added to the database"
-        });
+        try {
+            const count = await consumableModel.getConsumable(user);
+            const names = count.map(item => item.Name);
+    
+            res.render('../src/views/pages/diet', { consumable: names });
+    
+        }
+    
+        catch (err) {
+            console.log(err);
+        }
     }
     catch (err) {
         console.log(err);
@@ -28,27 +36,16 @@ exports.addEntry = async(req, res) => {
 
 
 exports.getConsumable = async(req, res) => {
-    const userID = res.locals.user.UserID;
+    const user = res.locals.user.UserID;
     try {
-        const count = await consumableModel.getConsumable(userID);
-        console.log(count)
-        res.redirect('/diet');
-
+        const count = await consumableModel.getConsumable(user);
         const names = count.map(item => item.Name);
-        console.log(names[0])
-        module.exports = names
 
-        fs.writeFile('../Operation-Health/json/consumable', JSON.stringify(names, null, 2), (err) => {
-            if (err) {
-              console.error('Error writing file:', err);
-            } else {
-              console.log('consumable.json has been saved!');
-            }
-          });
+        res.render('../src/views/pages/diet', { consumable: names });
+
     }
 
     catch (err) {
         console.log(err);
     }
 };
-

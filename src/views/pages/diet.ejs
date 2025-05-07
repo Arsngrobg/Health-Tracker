@@ -19,14 +19,9 @@
                 <fieldset>
                     <p>Enter a consumable to add</p>
                     <select name="Name" id="Name">
-                        <option value="Chicken Breast">Chicken Breast</option>
-                        <option value="Chicken Thigh">Chicken Thigh</option>
-                        <option value="Potatoes">Potatoes</option>
-                        <option value="Cheddar">Cheddar</option>
-                        <option value="Red Leicester">Red Leicester</option>
-                        <option value="Mozzarella">Mozzarella</option>
-                        <option value="White Bread">White Bread</option>
-                        <option value="Brown Bread">Brown Bread</option>
+                        <% consumable.forEach(name => { %>
+                          <option value="<%= name %>"><%= name %></option>
+                        <% }) %>
                       </select>
                       <p>Enter a meal to add the consumable to</p>
                       <select name="Type" id="Type">
