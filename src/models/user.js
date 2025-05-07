@@ -22,7 +22,7 @@ const deleteUser = async(userID) => {
 
 // For getting a user by username or email (logging in)
 const findUser = async(identifier) => {
-    const [user] = await db.promise().execute('SELECT * FROM User WHERE Username = ? OR Email = ?', [identifier, identifier]);
+    const [user] = await db.execute('SELECT * FROM User WHERE Username = ? OR Email = ?', [identifier, identifier]);
     if (user.length === 0) {
         return null;
     }
@@ -59,16 +59,16 @@ const updateUserAccount = async(userID, username, email) => {
 
 const clearHealth = async(userID) => {
     try {
-        await db.execute('UPDATE User SET Height = ?, Weight = ? WHERE UserID = ?', ['', '', userID]);
+        await db.execute('UPDATE User SET Height = ?, Weight = ? WHERE UserID = ?', [null, null, userID]);
     }
     catch (err) {
         throw err;
     }
 };
 
-const updateUserHealth = async(userID, weight, height) => {
+const updateUserHealth = async(userID, height, weight) => {
     try {
-        await db.execute('UPDATE User SET Height = ?, Weight = ? WHERE UserID = ?', [userID, weight, height]);
+        await db.execute('UPDATE User SET Height = ?, Weight = ? WHERE UserID = ?', [height, weight, userID]);
     }
     catch (err) {
         throw err;

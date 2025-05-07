@@ -39,14 +39,14 @@ p a {
 
 #reset-password {
     text-decoration: underline;
-    color: #00BFFF;
+    color: #014f86;
     font-size: 1.5rem;
     margin: 0.5rem 0 0.5rem 0;
 }
 
 #reset-password:hover {
     cursor: pointer;
-    font-weight: bold;
+    color: #00BFFF;
     transition-duration: 0.2;
 }
 

@@ -40,14 +40,16 @@ router.get('/', async (req, res) => {
         else {
             age = '';
         }
-        //const workouts = await exerciseController.weeklyWorkouts(req, res);
-        //const meals = await dietController.mealsToday(req, res);
+        const meals = await dietController.mealsToday(req, res);
+        const workouts = await exerciseController.weeklyWorkouts(req, res);
         const dateJoined = res.locals.user.DateJoined ? formatDate(res.locals.user.DateJoined) : '';
         res.render('../src/views/pages/profile', {
             profile: profile,
             user: res.locals.user,
             age: age,
-            dateJoined: dateJoined
+            dateJoined: dateJoined,
+            meals: meals.count,
+            workouts: workouts.count
         });
     }
 });
