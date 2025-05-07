@@ -105,6 +105,7 @@ CREATE TABLE IF NOT EXISTS ExerciseEntry (
     UserID   BIGINT                                                                           NOT NULL,
     Duration INT    CONSTRAINT C_DurPos CHECK ( Duration > 0 ),
     Distance INT    CONSTRAINT C_DisPos CHECK ( Distance > 0 ),
+    Count    INT    CONSTRAINT C_CouPos CHECK ( Distance > 0 ),
     Calories INT    CONSTRAINT C_CalPos CHECK ( Calories > 0 ),
     Date     DATE                                                                             NOT NULL DEFAULT ( CURDATE() )
 );
