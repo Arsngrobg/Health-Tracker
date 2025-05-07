@@ -103,9 +103,9 @@ CREATE TABLE IF NOT EXISTS ExerciseEntry (
     EntryID  BIGINT                                                                           NOT NULL AUTO_INCREMENT PRIMARY KEY,
     Activity ENUM('Running', 'Walking', 'Swimming', 'Cycling', 'Squats', 'Pushups', 'Situps') NOT NULL,
     UserID   BIGINT                                                                           NOT NULL,
-    Duration INT    CONSTRAINT C_DurPos CHECK ( Duration > 0 ),
-    Distance INT    CONSTRAINT C_DisPos CHECK ( Distance > 0 ),
-    Count    INT    CONSTRAINT C_CouPos CHECK ( Distance > 0 ),
-    Calories INT    CONSTRAINT C_CalPos CHECK ( Calories > 0 ),
+    Duration INT    CONSTRAINT C_DurPos CHECK ( Duration > 0 )										   DEFAULT (0),
+    Distance INT    CONSTRAINT C_DisPos CHECK ( Distance > 0 )								  		   DEFAULT (0),
+    Count    INT    CONSTRAINT C_CouPos CHECK ( Count > 0 )								      NOT NULL DEFAULT (1),
+    Calories INT    CONSTRAINT C_CalPos CHECK ( Calories > 0 )								  NOT NULL,
     Date     DATE                                                                             NOT NULL DEFAULT ( CURDATE() )
 );

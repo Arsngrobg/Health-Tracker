@@ -32,7 +32,7 @@ const deleteEntries = async(userID) => {
 
 const weeklyWorkouts = async(userID) => {
     try {
-        const [result] = await db.promise().execute('SELECT COUNT(*) AS count FROM ExerciseEntry WHERE UserID = ? AND Date >= CURDATE() - INTERVAL 7 DAY;', [userID]);
+        const [result] = await db.execute('SELECT COUNT(*) AS count FROM ExerciseEntry WHERE UserID = ? AND Date >= CURDATE() - INTERVAL 7 DAY;', [userID]);
         if (result.length === 0) {
             return null;
         }

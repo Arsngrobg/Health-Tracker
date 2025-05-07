@@ -31,7 +31,7 @@ exports.weeklyWorkouts = async(req, res) => {
     const userID = res.locals.user.UserID;
     try {
         const count = await exerciseModel.weeklyWorkouts(userID);
-        res.json(count);
+        return count;
     }
     catch (err) {
         console.log(err);
