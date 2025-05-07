@@ -62,6 +62,8 @@ CREATE TABLE IF NOT EXISTS Consumable (
     Carbohydrates FLOAT(1),
     Sugars        FLOAT(1),
     Fibre         FLOAT(1),
+    Protein       FLOAT(1),
+    Amount        INT,  
     FOREIGN KEY (UserID) REFERENCES User(UserID) ON DELETE CASCADE,
     CONSTRAINT C_SatLTOEFat  CHECK ( Saturates <= Fat ),
     CONSTRAINT C_SugLTOECarb CHECK ( Sugars    <= Carbohydrates )
@@ -72,7 +74,7 @@ CREATE TABLE IF NOT EXISTS Meal (
     MealID BIGINT      NOT NULL AUTO_INCREMENT PRIMARY KEY,
     UserID BIGINT          NULL DEFAULT NULL,
     Name   VARCHAR(32) NOT NULL DEFAULT 'Unnamed Meal',
-    FOREIGN KEY (UserID) REFERENCES User(UserID) ON DELETE CASCADE,
+    FOREIGN KEY (UserID) REFERENCES User(UserID) ON DELETE CASCADE
 );
 
 -- MealConsumable table definition

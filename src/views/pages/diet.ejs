@@ -10,11 +10,14 @@
     </head>
     <body>
         <%- include('../common/navigation.ejs') %>
-        <%- include('../common/nav2.ejs') %>
         <main>
-            <form method="POST">
+
+            <h2> Add a diet entry</h2>
+
+
+            <form method="POST" action="/diet/dietentry">
                 <fieldset>
-                    <p>Enter new Meal</p>
+                    <p>Enter a consumable to add</p>
                     <select name="Name" id="Name">
                         <option value="Chicken Breast">Chicken Breast</option>
                         <option value="Chicken Thigh">Chicken Thigh</option>
@@ -25,7 +28,7 @@
                         <option value="White Bread">White Bread</option>
                         <option value="Brown Bread">Brown Bread</option>
                       </select>
-                      <p>Food or Drink</p>
+                      <p>Enter a meal to add the consumable to</p>
                       <select name="Type" id="Type">
                           <option value="Food">Food</option>
                           <option value="Drink">Drink</option>
@@ -38,8 +41,58 @@
                     </button>
                 </fieldset>
             </form>
+
+
+
+
+            <h2> Add a new Meal</h2>
+
+            <form method="POST" action="/diet/meal">
+                <fieldset>
+                    <p>Create a meal with a meal name</p>
+                    <input id="Name" type="text" name="Name" required>
+                    <button id="submit">
+                        Submit
+                        <i class="fa-regular fa-paper-plane"></i>
+                    </button>
+                </fieldset>
+            </form>
+
+            <h2> Add a new consumable</h2>
+
+            <form method="POST" action="/diet/consumable">
+                <fieldset>
+                    <p>Enter new consumable name</p>
+                    <input id="Name" type="text" name="Name" required>
+                      <p>Food or Drink</p>
+                      <select name="Type" id="Type">
+                          <option value="Food">Food</option>
+                          <option value="Drink">Drink</option>
+                        </select>
+
+                    <p>Enter the amount of calories</p>
+                    <input id="calories" type="text" name="calories" required>
+                    <p>Enter the amount of fats</p>
+                    <input id="fats" type="text" name="fats" required>
+                    <p>Enter the amount of carbs</p>
+                    <input id="carbs" type="text" name="carbs" required>
+                    <p>Enter the amount of fibre</p>
+                    <input id="fibre" type="text" name="fibre" required>
+                    <p>Enter the amount of saturates</p>
+                    <input id="saturates" type="text" name="saturates" required>
+                    <p>Enter the amount of sugar</p>
+                    <input id="sugar" type="text" name="sugar" required>
+                    <p>Enter the amount of protein</p>
+                    <input id="protein" type="text" name="protein" required>
+                    <p>How many grams is the values above for ?</p>
+                    <input id="Amount" type="text" name="Amount" required>
+                    <button id="submit">
+                        Submit
+                        <i class="fa-regular fa-paper-plane"></i>
+                    </button>
+                </fieldset>
+            </form>
                 
-            </section>
         </main>
         <%- include('../common/footer.ejs') %>
     </body>

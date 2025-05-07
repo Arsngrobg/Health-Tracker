@@ -11,7 +11,7 @@ const deleteEntries = async(userID) => {
 
 const mealsToday = async(userID) => {
     try {
-        const [result] = await db.execute('SELECT COUNT(*) AS count FROM DietEntry WHERE UserID = ? AND Date = CURDATE()', [userID]);
+        const [result] = await db.promise().query('SELECT COUNT(*) AS count FROM DietEntry WHERE UserID = ? AND Date = CURDATE()', [userID]);
         if (result.length === 0) {
             return null;
         }
@@ -21,7 +21,7 @@ const mealsToday = async(userID) => {
         console.log(err);
         return 0;
     }
-}
+};
 
 module.exports = {
     deleteEntries,

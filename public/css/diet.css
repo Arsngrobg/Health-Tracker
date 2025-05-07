@@ -9,6 +9,8 @@ form {
     border: 1px solid #00BFFF;
     margin: 0 30% 0 30%;
     border-radius: 5px;
+    margin-bottom: 20px; 
+    margin-top: 20px;
 }
 
 fieldset {
@@ -55,6 +57,13 @@ label {
     width: 100%;
     padding: 1rem 0 0.5rem 0;
 } 
+
+h2 {
+    font-size: 2.5rem;
+    color: #014f86;
+    margin: 0 0 0.5rem 0;
+    text-align: center;
+}
 
 input, textarea {
     padding: 0.6rem;

@@ -23,7 +23,7 @@ router.get('/consumable', (req, res) => {
         res.redirect('/users/login');
     }
     else {
-        res.render('../src/views/pages/consumable', {
+        res.render('../src/views/pages/diet', {
             diet: diet
         });
     }
@@ -34,7 +34,7 @@ router.get('/dietentry', (req, res) => {
         res.redirect('/users/login');
     }
     else {
-        res.render('../src/views/pages/dietentry', {
+        res.render('../src/views/pages/diet', {
             diet: diet
         });
     }
@@ -45,16 +45,16 @@ router.get('/meal', (req, res) => {
         res.redirect('/users/login');
     }
     else {
-        res.render('../src/views/pages/meal', {
+        res.render('../src/views/pages/diet', {
             diet: diet
         });
     }
 });
 
 
-router.post('/', consumableController.addEntry);
-// router.post('/', mealController.addEntry);
-// router.post('/', dietController.addEntry);
+router.post('/consumable', consumableController.addEntry);
+router.post('/meal', mealController.addEntry);
+router.post('/dietentry', consumableController.getConsumable);
 
 
 module.exports = router;

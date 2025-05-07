@@ -1,11 +1,11 @@
 const db = require('../config/db');
 
 
-const addEntry = async(Name) => {
+const addEntry = async(user, Name) => {
     console.log("trying")
     try{
-        console.log("trying")
-        await db.execute('INSERT INTO Meal (Name) VALUES (?)',[Name]);
+
+        await db.execute('INSERT INTO Meal (UserID, Name) VALUES (?, ?)',[user, Name]);
             console.log(Name);
     }
 
