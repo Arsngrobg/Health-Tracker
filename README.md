@@ -18,7 +18,7 @@ npm install
 
 #### Configuring MySQL
 Make sure you have installed and configured [MySQL](https://www.mysql.com) - MySQL Workbench recommended.
-Once you have set up MySQL, copy the ```DEFAULT.env``` file and rename it to ```.env``` and configure appropriately.
+Once you have set up MySQL, copy the ```TEMPLATE.env``` file and rename it to ```.env``` and configure appropriately.
 Assuming the .env file is correct the application should initialize with no problem.
 To create the database you must run the `DDL.sql` file and it will create the database and the neccessary tables.
 

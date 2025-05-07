@@ -13,7 +13,7 @@ This list is a marker to determine what the Health Tracker should have as a mini
  - [ ] Custom Diet Entry Capture
  - [ ] Exercise Entry Capture
  - [ ] Custom Exercise Entry Capture
- - [ ] Health Parameter Entry
+ - [x] Health Parameter Entry
 
 ## User Groups
  - [ ] Group Creation
@@ -26,7 +26,7 @@ This list is a marker to determine what the Health Tracker should have as a mini
 
 ## Opt-In/Opt-Out
  - [ ] Group Goals/Goal Sharing
- - [ ] Delete Health Records
+ - [x] Delete Health Records
 
 ## Visualisation
  - [ ] Graphs
