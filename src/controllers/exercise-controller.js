@@ -7,7 +7,19 @@ exports.addEntry = async(req, res) => {
     const activity = req.body.activity;
     const duration = req.body.duration;
     const distance = req.body.distance;
-    const calories = req.body.calories;
+
+    //calculate calories if not stated
+    let tempCal = req.body.calories;
+    if(req.body.calories)
+    {
+        tempCal = req.body.calories;
+    }else
+    {
+        tempCal = 10;
+    }
+
+    const calories = tempCal;
+
     try {
         await exerciseModel.addEntry(activity, user.UserID, duration, distance, calories);
         res.redirect('/exercise');
