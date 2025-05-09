@@ -1,5 +1,5 @@
 const consumableModel = require('../models/consumable');
-const fs = require('fs');
+const mealModel = require('../models/meal');
 
 
 exports.addEntry = async(req, res) => {
@@ -19,9 +19,12 @@ exports.addEntry = async(req, res) => {
         await consumableModel.addEntry(user, Name, Type, Amount, calories, fats, carbs, fibre, saturates, sugar, protein);
         try {
             const count = await consumableModel.getConsumable(user);
-            const names = count.map(item => item.Name);
-    
-            res.render('../src/views/pages/diet', { consumable: names });
+            const result = count.map(item => item.Name);
+            
+            const count2 = await mealModel.getMeal(user)
+            const Meals = count2.map(item => item.Name)
+                    
+            res.render('../src/views/pages/diet', { consumable: result, Meals });
     
         }
     
@@ -39,9 +42,12 @@ exports.getConsumable = async(req, res) => {
     const user = res.locals.user.UserID;
     try {
         const count = await consumableModel.getConsumable(user);
-        const names = count.map(item => item.Name);
-
-        res.render('../src/views/pages/diet', { consumable: names });
+        const result = count.map(item => item.Name);
+        
+        const count2 = await mealModel.getMeal(user)
+        const Meals = count2.map(item => item.Name)
+                
+        res.render('../src/views/pages/diet', { consumable: result, Meals });
 
     }
 

@@ -4,14 +4,11 @@ const dietController = require('../controllers/diet-controller');
 const consumableController = require('../controllers/consumable-controller');
 const mealController = require('../controllers/meal-controller');
 const consumableModel = require('../models/consumable');
-
+const mealModel = require('../models/meal');
 
 // Importing JSON files to access page content
 const diet = require('../json/diet.json');
 
-const names = require('../controllers/consumable-controller');
-
-console.log(names)
 
 router.get('/', async (req, res) => {
     if(!res.locals.loggedIn) {
@@ -19,11 +16,18 @@ router.get('/', async (req, res) => {
     }
     else {
         const user = res.locals.user.UserID;
+        console.log(user)
             try {
+
+                
                 const count = await consumableModel.getConsumable(user);
-                const names = count.map(item => item.Name);
+                const result = count.map(item => item.Name);
+                
+                console.log(user)
+                const count2 = await mealModel.getMeal(user)
+                const Meals = count2.map(item => item.Name)
         
-                res.render('../src/views/pages/diet', { consumable: names });
+                res.render('../src/views/pages/diet', { consumable: result, Meals });
         
             }
         
@@ -41,9 +45,12 @@ router.get('/consumable', async (req, res) => {
         const user = res.locals.user.UserID;
             try {
                 const count = await consumableModel.getConsumable(user);
-                const names = count.map(item => item.Name);
+                const result = count.map(item => item.Name);
         
-                res.render('../src/views/pages/diet', { consumable: names });
+                const count2 = await mealModel.getMeal(user)
+                const Meals = count2.map(item => item.Name)
+        
+                res.render('../src/views/pages/diet', { consumable: result, Meal: Meals });
         
             }
         
@@ -61,9 +68,12 @@ router.get('/dietentry', async (req, res) => {
         const user = res.locals.user.UserID;
             try {
                 const count = await consumableModel.getConsumable(user);
-                const names = count.map(item => item.Name);
+                const result = count.map(item => item.Name);
         
-                res.render('../src/views/pages/diet', { consumable: names });
+                const count2 = await mealModel.getMeal(user)
+                const Meals = count2.map(item => item.Name)
+        
+                res.render('../src/views/pages/diet', { consumable: result, Meal: Meals });
         
             }
         
@@ -81,9 +91,12 @@ router.get('/meal', async (req, res) => {
         const user = res.locals.user.UserID;
             try {
                 const count = await consumableModel.getConsumable(user);
-                const names = count.map(item => item.Name);
+                const result = count.map(item => item.Name);
+
+                const count2 = await mealModel.getMeal(user)
+                const Meals = count2.map(item => item.Name)
         
-                res.render('../src/views/pages/diet', { consumable: names });
+                res.render('../src/views/pages/diet', { consumable: result, Meal: Meals });
         
             }
         
@@ -96,7 +109,7 @@ router.get('/meal', async (req, res) => {
 
 router.post('/consumable', consumableController.addEntry);
 router.post('/meal', mealController.addEntry);
-router.post('/dietentry', consumableController.getConsumable);
+router.post('/dietentry', dietController.addEntry)
 
 
 module.exports = router;
