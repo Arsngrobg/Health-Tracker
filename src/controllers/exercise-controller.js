@@ -4,9 +4,20 @@ const privacySettings = require('../json/privacy-settings.json');
 
 exports.addEntry = async(req, res) => {
     const user = res.locals.user;
-    const activity = req.body.activity;
+    activity = req.body.activity;
+    const otheractivity = req.body.otheractivity;
     const duration = req.body.duration;
     const distance = req.body.distance;
+    const calories = req.body.calories;
+    const counting = req.body.count;
+    console.log(user)
+    console.log(activity)
+    console.log(duration)
+    console.log(distance)
+    console.log(calories)
+    console.log(counting)
+    console.log(otheractivity)
+
 
     //calculate calories if not stated
     let tempCal = req.body.calories;
@@ -15,14 +26,29 @@ exports.addEntry = async(req, res) => {
         tempCal = req.body.calories;
     }else
     {
-        tempCal = 10;
+        tempCal = calories;
     }
 
-    const calories = tempCal;
+    if (otheractivity != ""){
+        activity = otheractivity
+        console.log("done")
+    }
+
+    const finalCalories = tempCal;
 
     try {
-        await exerciseModel.addEntry(activity, user.UserID, duration, distance, calories);
-        res.redirect('/exercise');
+        await exerciseModel.addEntry(activity, user.UserID, duration, distance, finalCalories, counting);
+        try {
+            const count = await exerciseModel.getExercise(user.UserID);
+            console.log(count)
+            const result = count.map(item => item.Activity);
+                
+            res.render('../src/views/pages/exercise', { Exercise: result });
+                
+                    }
+        catch (err) {
+                console.log(err);
+            }
     }
     catch (err) {
         console.log(err);

@@ -9,3 +9,18 @@ INSERT INTO Consumable (Name, Type, Energy, Fat, Carbohydrates, Protein, Fibre, 
 ("Brown Bread", "Food", 954, 2.3, 37.8, 6.4, 6.4, 0.5, 2.4, 100),
 ("White Rice", "Food", 154, 0.9, 32.6, 3.6, 0.6, 0.1, 0.1, 100),
 ("Brown Rice", "Food", 175, 1.5, 35.5, 4, 2.3,  0.3,  0.1, 100);
+
+
+
+
+
+INSERT INTO ExerciseEntry (EntryID, Activity, Duration, Distance, Calories) VALUES 
+(1,  'Running',       30, 5.0, 300),
+(2,  'Cycling',       45, 15.0, 400),
+(3,  'Swimming',      60, 2.0, 500),
+(4,  'Walking',       20, 2.0, 100),
+(5,  'Rowing',        40, 6.0, 350),
+(6,  'Hiking',        90, 8.0, 600),
+(7,  'Elliptical',    30, 4.0, 280),
+(9,  'Skating',       35, 7.0, 370),
+(10, 'Rollerblading', 50, 10.0, 450);

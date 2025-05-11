@@ -32,6 +32,19 @@ fieldset p {
     font-size: 1rem;
 }
 
+button{
+    align-self: center;
+    color: white;
+    margin: 2rem 1rem;
+    background-color: #014f86;
+    width: 100%;
+    min-height: 2rem;
+    padding: 0.8rem;
+    border: 1px solid #014f86;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
 .error {
     padding: 0.5rem 0;
     font-weight: normal;
@@ -62,7 +75,7 @@ label {
     padding: 1rem 0 0.5rem 0;
 } 
 
-input, textarea {
+input, textarea, select  {
     padding: 0.6rem;
     border: 1px solid #014f86;
     border-radius: 5px;

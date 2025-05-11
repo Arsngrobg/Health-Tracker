@@ -15,18 +15,21 @@
             <form method="POST">
                 <fieldset>
                     <label>Select exercise:</label>
-                    <select name="activity" id="activity" value="">
-                        <option value="Pushups">Pushups</option>
-                        <option value="Swimming">Swimming</option>
-                        <option value="Situps">Situps</option>
-                        <option value="Running">Running</option>
+                    <select name="activity" id="activity">
+                        <% Exercise.forEach(name => { %>
+                          <option value="<%= name %>"><%= name %></option>
+                        <% }) %>
                       </select>
+                    <label>Or Enter your own exercise name:</label>
+                    <input id="otheractivity" type="text" name="otheractivity">  
                     <label>Enter duration:</label>
                     <input id="duration" type="number" name="duration">
-                    <label id="distance-label">Enter distance:</label>
+                    <label >Enter distance:</label>
                     <input id="distance" type="number" name="distance">
                     <label>Enter amount of calories:</label>
                     <input id="calories" type="number" name="calories">
+                    <label>Enter amount a count:</label>
+                    <input id="count" type="number" name="count">
                     <button id="submit">
                         Submit
                         <i class="fa-regular fa-paper-plane"></i>

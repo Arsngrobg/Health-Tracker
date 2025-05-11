@@ -1,10 +1,11 @@
 const db = require('../config/db');
+const { get } = require('../routes/exercise');
 
-const addEntry = async(activity, userID, duration, distance, calories) => {
+const addEntry = async(activity, userID, duration, distance, calories, counting) => {
     try {
-        await db.execute('INSERT INTO ExerciseEntry (Activity, UserID, Duration, Distance, Calories) VALUES (?, ?, ?, ?, ?)',
-            [activity, userID, duration, distance, calories]);
-            console.log(activity);
+        await db.execute('INSERT INTO ExerciseEntry(Activity, UserID, Duration, Distance, Calories, Count) VALUES (?, ?, ?, ?, ?, ?)',
+            [activity, userID, duration, distance, calories, counting]);
+            return console.log("hi")
     }
     catch (err) {
         throw err;
@@ -44,9 +45,24 @@ const weeklyWorkouts = async(userID) => {
     }
 };
 
+const getExercise = async() =>{
+    try {
+        const [result] = await db.query('SELECT Activity FROM ExerciseEntry WHERE UserID IS NULL;', []);
+        if (result.length === 0) {
+            return null;
+        }
+        return result;
+    }
+    catch (err) {
+        console.log(err);
+        return 0;
+    }
+}
+
 module.exports = {
     addEntry,
     fetchAll,
     deleteEntries,
-    weeklyWorkouts
+    weeklyWorkouts,
+    getExercise
 };
