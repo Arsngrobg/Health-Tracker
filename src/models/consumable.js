@@ -15,7 +15,7 @@ const addEntry = async(user, Name, Type, Amount, calories, fats, carbs, fibre, s
 
 const getConsumable = async(userID) => {
     try {
-        const [result] = await db.promise().query('SELECT Name FROM Consumable WHERE UserID = ? OR UserID IS NULL', [userID]);
+        const [result] = await db.query('SELECT Name FROM Consumable WHERE UserID = ? OR UserID IS NULL', [userID]);
         if (result.length === 0) {
             return null;
         }
