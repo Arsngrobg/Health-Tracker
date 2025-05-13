@@ -1,1 +1,7 @@
-{}
+{
+    "addGoal": "Add Your Goals",
+    "duration": "duration:",
+    "distance": "distance:",
+    "calories": "calories:",
+    "weight": "weight:"
+}

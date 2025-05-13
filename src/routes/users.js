@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/user-controller');
+const goalController = require('../controllers/goal-controller');
 
 // Importing JSON files to access page content
 const login = require('../json/login.json');
@@ -32,10 +33,13 @@ router.get('/resetPassword', (req, res) => {
     res.render('../src/views/pages/reset-password', {
         resetPassword : resetPassword
     })
-})
+});
+
 
 router.post('/login', userController.login);
 router.post('/signup', userController.signup);
 router.post('/resetPassword', userController.resetPassword);
+
+router.post('/addGoal', goalController.addGoal);
 
 module.exports = router;
