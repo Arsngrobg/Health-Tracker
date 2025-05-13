@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS Consumable (
     UserID        BIGINT                    NULL,
     Name		  VARCHAR(32)			NOT NULL,
     Type          ENUM('Food', 'Drink') NOT NULL,
-    Energy        INT,
+    Calories      INT,
     Fat           FLOAT(1),
     Saturates     FLOAT(1),
     Carbohydrates FLOAT(1),

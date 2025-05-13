@@ -1,51 +1,28 @@
 const mealModel = require('../models/meal');
-const consumableModel = require('../models/consumable');
 
-exports.addEntry = async(req, res) => {
-    const user = res.locals.user.UserID;
-    const Name = req.body.Name;
-    const consumable = req.body.Consumables;
-    const Grams = req.body.Grams;
+exports.addMeal = async(req, res) => {
+    const userID = res.locals.user.UserID;
+    const name = req.body.name;
+    const consumables = req.body.consumables;
     try {
-        for (let i = 0; i < consumable.length; i++) {
-            const consumableName = consumable[i];
-            const grams = Grams[i];
-            await mealModel.addEntry(user, Name, consumableName, grams);
+        await mealModel.addMeal(userID, name);
+        for (let i = 0; i < consumables.length; i++) {
+            const consumableID = consumables[i];
+            await mealModel.addMealConsumable(userID, consumableID);
         }
-        try {
-            const count = await consumableModel.getConsumable(user);
-            const result = count.map(item => item.Name);
-            
-            const count2 = await mealModel.getMeal(user)
-            const Meals = count2.map(item => item.Name)
-                    
-            res.render('../src/views/pages/diet', { consumable: result, Meals });
-        
-            }
-        
-            catch (err) {
-                console.log(err);
-            }
+        res.redirect('/diet');
     }
     catch (err) {
         console.log(err);
     }
 };
 
-exports.getMeal = async(req, res) => {
-    const user = res.locals.user.UserID;
-    console.log(user)
+exports.fetchAll = async(req, res) => {
+    const userID = res.locals.user.UserID;
     try {
-        const count = await consumableModel.getConsumable(user);
-        const result = count.map(item => item.Name);
-        
-        const count2 = await mealModel.getMeal(user)
-        const Meals = count2.map(item => item.Name)
-                
-        res.render('../src/views/pages/diet', { consumable: result, Meals });
-
+        const meals = await mealModel.fetchAll(userID);
+        return meals;
     }
-
     catch (err) {
         console.log(err);
     }

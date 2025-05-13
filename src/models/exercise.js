@@ -1,11 +1,9 @@
 const db = require('../config/db');
-const { get } = require('../routes/exercise');
 
-const addEntry = async(activity, userID, duration, distance, calories, counting) => {
+const addEntry = async(activity, userID, duration, distance, calories, count) => {
     try {
         await db.execute('INSERT INTO ExerciseEntry(Activity, UserID, Duration, Distance, Calories, Count) VALUES (?, ?, ?, ?, ?, ?)',
-            [activity, userID, duration, distance, calories, counting]);
-            return console.log("hi")
+            [activity, userID, duration, distance, calories, count]);
     }
     catch (err) {
         throw err;
@@ -14,7 +12,7 @@ const addEntry = async(activity, userID, duration, distance, calories, counting)
 
 const fetchAll = async(userID) => {
     try {
-        const [exerciseEntries] = await db.execute(`SELECT Duration, Distance, Calories, Date FROM ExerciseEntry WHERE UserID = ? GROUP BY Date ORDER BY Date ASC`, userID);
+        const [exerciseEntries] = await db.execute(`SELECT Activity, Duration, Distance, Count, Calories, Date FROM ExerciseEntry WHERE UserID = ? GROUP BY Date ORDER BY Date ASC`, userID);
         return exerciseEntries;
     }
     catch (err) {
@@ -33,7 +31,7 @@ const deleteEntries = async(userID) => {
 
 const weeklyWorkouts = async(userID) => {
     try {
-        const [result] = await db.promise().execute('SELECT COUNT(*) AS count FROM ExerciseEntry WHERE UserID = ? AND Date >= CURDATE() - INTERVAL 7 DAY;', [userID]);
+        const [result] = await db.execute('SELECT COUNT(*) AS count FROM ExerciseEntry WHERE UserID = ? AND Date >= CURDATE() - INTERVAL 7 DAY', [userID]);
         if (result.length === 0) {
             return null;
         }
@@ -45,24 +43,9 @@ const weeklyWorkouts = async(userID) => {
     }
 };
 
-const getExercise = async() =>{
-    try {
-        const [result] = await db.query('SELECT Activity FROM ExerciseEntry WHERE UserID IS NULL;', []);
-        if (result.length === 0) {
-            return null;
-        }
-        return result;
-    }
-    catch (err) {
-        console.log(err);
-        return 0;
-    }
-}
-
 module.exports = {
     addEntry,
     fetchAll,
     deleteEntries,
-    weeklyWorkouts,
-    getExercise
+    weeklyWorkouts
 };

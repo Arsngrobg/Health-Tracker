@@ -11,84 +11,69 @@
     <body>
         <%- include('../common/navigation.ejs') %>
         <main>
-
-            <h2> Add a diet entry</h2>
-
-
+            <h2>Make a diet entry</h2>
             <form method="POST" action="/diet/dietentry">
                 <fieldset>
-                    <p>Select a meal to add to your diet entry</p>
-                    <select name="Meal" id="Meal">
-                        <% Meals.forEach(name => { %>
-                          <option value="<%= name %>"><%= name %></option>
+                    <p>Select a meal</p>
+                    <select name="mealID" id="meal">
+                        <% meals.forEach(meal => { %>
+                          <option value="<%= meal.MealID %>"><%= meal.Name %></option>
                         <% }) %>
-                      </select>
+                    </select>
                     <button id="submit">
                         Add
                         <i class="fa-regular fa-paper-plane"></i>
                     </button>
                 </fieldset>
             </form>
-
-
-
-
-            <h2> Add a new Meal</h2>
-
+            <h2>Create a new meal</h2>
             <form method="POST" action="/diet/meal">
                 <fieldset>
-                    <p>Create a meal with a meal name</p>
-                    <input id="Name" type="text" name="Name" required>
-                    
-                    <p>Add a consumable </p>
+                    <p>Create a meal</p>
+                    <input id="name" type="text" name="name" required>
+                    <p>Add food or drink </p>
                     <div id="consumables">
                         <div class="consumables">
-                            <select name="Consumables[]" required>
-                                <% consumable.forEach(name => { %>
-                                  <option value="<%= name %>"><%= name %></option>
+                            <select name="consumables" required>
+                                <% consumables.forEach(consumable => { %>
+                                  <option value="<%= consumable.ConsumableID %>"><%= consumable.Name %></option>
                                 <% }) %>
                               </select>
-                            <input type="Grams" name="Grams[]" placeholder="Grams" min="1" required>
                         </div>
                     </div>
-            
-                    <button type="button" onclick="addConsumable()">Add Another Consumable</button>
-
+                    <button type="button" onclick="addConsumable()">Add more to the meal</button>
                     <button id="submit">
                         Add
                         <i class="fa-regular fa-paper-plane"></i>
                     </button>
                 </fieldset>
             </form>
-
-            <h2> Add a new consumable</h2>
-
+            <h2> Create a new food or drink</h2>
             <form method="POST" action="/diet/consumable">
                 <fieldset>
-                    <p>Enter new consumable name</p>
-                    <input id="Name" type="text" name="Name" required>
+                    <p>Enter new food or drink name</p>
+                    <input id="name" type="text" name="name" required>
                       <p>Food or Drink</p>
-                      <select name="Type" id="Type">
-                          <option value="Food">Food</option>
-                          <option value="Drink">Drink</option>
+                      <select name="type" id="type">
+                          <option value="food">Food</option>
+                          <option value="drink">Drink</option>
                         </select>
-
-                    <p>Enter the amount of calories</p>
+                    <label>Enter the amount of calories</label>
                     <input id="calories" type="text" name="calories" required>
-                    <p>Enter the amount of fats</p>
+                    <label>Enter the amount of fats</label>
                     <input id="fats" type="text" name="fats" required>
-                    <p>Enter the amount of carbs</p>
-                    <input id="carbs" type="text" name="carbs" required>
-                    <p>Enter the amount of fibre</p>
-                    <input id="fibre" type="text" name="fibre" required>
-                    <p>Enter the amount of saturates</p>
+                    <label>Enter the amount of saturates</labelp>
                     <input id="saturates" type="text" name="saturates" required>
-                    <p>Enter the amount of sugar</p>
+                    <label>Enter the amount of carbohydrates</label>
+                    <input id="carbohydrates" type="text" name="carbohydrates" required>
+                    <label>Enter the amount of sugar</label>
                     <input id="sugar" type="text" name="sugar" required>
-                    <p>Enter the amount of protein</p>
+                    <label>Enter the amount of fibre</label>
+                    <input id="fibre" type="text" name="fibre" required>
+                    <plabel>Enter the amount of protein</label>
                     <input id="protein" type="text" name="protein" required>
-                    <p>How many grams is the values above for ?</p>
-                    <input id="Amount" type="text" name="Amount" required>
+                    <label>How many grams is the values above for?</label>
+                    <input id="amount" type="text" name="amount" required>
                     <button id="submit">
                         Add
                         <i class="fa-regular fa-paper-plane"></i>
@@ -102,28 +87,17 @@
 
     <script>
         function addConsumable() {
-          const container = document.getElementById('consumables');
-          const div = document.createElement('div');
-          div.className = 'consumable';
-      
-          const select = document.createElement('select');
-          select.name = 'Consumables[]';
-          select.required = true;
-          select.innerHTML = `<% consumable.forEach(name => { %>
-                                <option value="<%= name %>"><%= name %></option>
+            const container = document.getElementById('consumables');
+            const div = document.createElement('div');
+            div.className = 'consumable';
+            const select = document.createElement('select');
+            select.name = 'consumables';
+            select.required = true;
+            select.innerHTML = `<% consumables.forEach(consumable => { %>
+                                <option value="<%= consumable.ConsumableID %>"><%= consumable.Name %></option>
                               <% }) %>`;
-      
-          const quantity = document.createElement('input');
-          quantity.type = 'Grams';
-          quantity.name = 'Grams[]';
-          quantity.placeholder = 'Grams';
-          quantity.min = '1';
-          quantity.required = true;
-      
-          div.appendChild(select);
-          div.appendChild(quantity);
-      
-          container.appendChild(div);
+            container.appendChild(div);
+            div.appendChild(select);
         }
       </script>
 </html>

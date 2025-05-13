@@ -1,39 +1,32 @@
 const db = require('../config/db');
 
 
-const addEntry = async(user, Name, Consumable, Grams) => {
-    console.log("trying")
+const addMeal = async(userID, name) => {
     try{
-
-        await db.execute('INSERT INTO Meal (UserID, Name) VALUES (?, ?)',[user, Name]);
-            console.log(Name);
-
-
-        const [result] = await db.query('SELECT MealID FROM Meal WHERE UserID = ? ORDER BY MealID DESC LIMIT 1', [user]);
-        if (result.length === 0) {
-            return null;
-        }
-
-        const mealID = result[0].MealID;
-        console.log(mealID);
-
-        const [result2] = await db.query('SELECT ConsumableID FROM consumable WHERE UserID = ? OR UserID IS NULL AND Name = ?', [user, Consumable])
-        console.log(result2)
-
-        const ConsumableID = result2[0].ConsumableID;
-        console.log(ConsumableID)
-
-        await db.execute('INSERT INTO MealConsumable (MealID, ConsumableID) VALUES (?,?)', [mealID, ConsumableID ])
+        await db.execute('INSERT INTO Meal (UserID, Name) VALUES (?, ?)', [userID, name]);
     }
-
     catch (err) {
         throw err;
     }
 };
 
-const getMeal = async(userID) => {
+const addMealConsumable = async(userID, consumableID) => {
+    try{
+        const [meal] = await db.query('SELECT MealID FROM Meal WHERE UserID = ? ORDER BY MealID DESC LIMIT 1', [userID]);
+        if (meal.length === 0) {
+            return null;
+        }
+        const mealID = meal[0].MealID;
+        await db.execute('INSERT INTO MealConsumable (MealID, ConsumableID) VALUES (?, ?)', [mealID, consumableID])
+    }
+    catch (err) {
+        throw err;
+    }
+};
+
+const fetchAll = async(userID) => {
     try {
-        const [result] = await db.query('SELECT Name FROM Meal WHERE UserID = ?', [userID]);
+        const [result] = await db.query('SELECT * FROM Meal WHERE UserID = ? OR UserID IS NULL', [userID]);
         if (result.length === 0) {
             return null;
         }
@@ -47,6 +40,7 @@ const getMeal = async(userID) => {
 };
 
 module.exports = {
-    addEntry,
-    getMeal
-}
+    addMeal,
+    addMealConsumable,
+    fetchAll
+};

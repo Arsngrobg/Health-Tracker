@@ -1,6 +1,4 @@
 const dietModel = require('../models/diet');
-const consumableModel = require('../models/consumable');
-const mealModel = require('../models/meal');
 
 exports.deleteEntries = async(req, res) => {
     const userID = res.locals.user.UserID;
@@ -24,26 +22,11 @@ exports.mealsToday = async(req, res) => {
 };
 
 exports.addEntry = async(req, res) => {
-    const user = res.locals.user.UserID;
-    const Meal = req.body.Meal;
-
-
+    const userID = res.locals.user.UserID;
+    const mealID = req.body.mealID;
     try {
-        await dietModel.addEntry(user, Meal);
-        try {
-            const count = await consumableModel.getConsumable(user);
-            const result = count.map(item => item.Name);
-            
-            const count2 = await mealModel.getMeal(user)
-            const Meals = count2.map(item => item.Name)
-                    
-            res.render('../src/views/pages/diet', { consumable: result, Meals });
-    
-        }
-    
-        catch (err) {
-            console.log(err);
-        }
+        await dietModel.addEntry(userID, mealID);
+        res.redirect('/diet');
     }
     catch (err) {
         console.log(err);

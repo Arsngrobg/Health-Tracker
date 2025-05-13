@@ -11,7 +11,7 @@ const addGoal = async(userID, duration, distance, calories, weight) => {
 };
 
 const fetchAll = async(userID) => {
-    const [goals] = await db.execute(`SELECT Duration, Distance, Calories, Weight, Date FROM Goal WHERE UserID = ? GROUP BY Date ORDER BY Date ASC`, userID);
+    const [goals] = await db.execute(`SELECT * FROM Goal WHERE UserID = ? GROUP BY Date ORDER BY Date ASC`, userID);
     return goals;
 };
 
