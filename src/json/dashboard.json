@@ -1,7 +1,9 @@
 {
+    "goalTypes": ["Weight", "Calories", "Distance", "Duration"],
     "addGoal": "Add Your Goals",
-    "duration": "duration:",
-    "distance": "distance:",
-    "calories": "calories:",
-    "weight": "weight:"
+    "typeText": "Select type of goal",
+    "valueText": "Input your goal value",
+    "dateText": "Input date you wish to acomplish the goals by",
+    "value": "value",
+    "date": "date"
 }

@@ -41,5 +41,6 @@ router.post('/signup', userController.signup);
 router.post('/resetPassword', userController.resetPassword);
 
 router.post('/addGoal', goalController.addGoal);
+router.post('/removeGoal', goalController.removeGoal);
 
 module.exports = router;
