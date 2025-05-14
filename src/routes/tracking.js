@@ -86,7 +86,7 @@ router.get('/', async (req, res) => {
         Duration: []
     };
 
-    for (let i = 0; i < (rawGoals.length || []); i++) {
+    for (let i = 0; i < (rawGoals || []).length; i++) {
         const goal = rawGoals[i];
         const date = goal.Date || new Date().toISOString().split('T')[0]; // fallback date
         if (goal.CaloriesBurned) {
