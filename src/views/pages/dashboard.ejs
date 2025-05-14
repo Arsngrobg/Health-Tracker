@@ -20,7 +20,10 @@
                     <h3>Current Goals:</h3>
 
                     <% goals.forEach(goal => {%>
-                        <p><b>Goal Number <%= goal.Count %>: </b>Type = <%= goal.type %>, Goal = <%= goal.value %></p>
+                        <% console.log(goal.Completed) %>
+                        <% if(!goal.Completed) { %>
+                            <p><b>Goal Number <%= goal.Count %>: </b>Type = <%= goal.Type %>, Goal = <%= goal.value %></p>
+                        <% } %>
                     <% }) %>
                 
                 </section>
@@ -47,12 +50,17 @@
 
                 </section>
 
-                <form method="POST" action="/users/removeGoal">
-                    <select name="goalID" id="goal">
-                        <% goals.forEach(goal => {%>
-                            <option value="<%= goal.goalID %>">Goal Number <%= goal.Count %></option>
-                        <% }) %>
-                    </select>
+                <form method="POST" action="/users/completeGoal">
+                    <fieldset>
+                        <select name="goalID" id="goal">
+                            <% goals.forEach(goal => {%>
+                                <% if(!goal.Completed){ %>
+                                    <option value="<%= goal.GoalID %>">Goal Number <%= goal.Count %></option>
+                                <% } %>
+                            <% }) %>
+                        </select>
+                        <button id="submit">Mark Complete</button>
+                    </fieldset>
                 </form>
 
             </section>

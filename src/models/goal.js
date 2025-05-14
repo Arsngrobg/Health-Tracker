@@ -1,16 +1,16 @@
 const db = require('../config/db');
 
-const addGoal = async(userID, duration, distance, caloriesBurned, caloriesEaten, weight) => {
+const addGoal = async(userID, type, duration, distance, caloriesBurned, caloriesEaten, weight, date) => {
     try {
-        await db.execute('INSERT INTO Goal (UserID, Duration, Distance, CaloriesBurned, CaloriesEaten, Weight) VALUES (?, ?, ?, ?, ?, ?)',
-            [userID, duration, distance, caloriesBurned, caloriesEaten, weight]);
+        await db.execute('INSERT INTO Goal (UserID, type, Duration, Distance, CaloriesBurned, CaloriesEaten, Weight, date) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+            [userID, type, duration, distance, caloriesBurned, caloriesEaten, weight, date]);
     }
     catch (err) {
         throw err;
     }
 };
 
-const fetchAll = async(userID, date = null) => {
+const fetchAll = async(userID, date) => {
     try {
         let result;
         if(date) {
@@ -32,7 +32,18 @@ const fetchAll = async(userID, date = null) => {
     }
 };
 
+const completeGoal = async(goalID) => {
+    try{
+        await db.execute('UPDATE Goal SET Completed = true WHERE GoalID = ?',
+            [goalID]);
+    }
+    catch (err){
+        throw err;
+    }
+};
+
 module.exports = {
     addGoal,
+    completeGoal,
     fetchAll
 };

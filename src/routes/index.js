@@ -9,31 +9,40 @@ const goalController = require('../controllers/goal-controller');
 
 router.get('/', async(req, res) => {
     if(res.locals.loggedIn) {
-        const goals = await goalController.fetchAll(req, res) || [];
+        const goals = await goalController.fetchAll(req, res, null) || [];
         if(goals != []){
             let count = 1;
 
             goals.forEach(goal => {
                 goal["Count"] = count;
-                
-                if(goal.type == "Weight"){
-                    goal["value"] = goal.Weight;
-                }
-                if(goal.type == "Calories"){
-                    goal["value"] = goal.Calories;
-                }
-                if(goal.type == "Duration"){
-                    goal["value"] = goal.Duration;
-                }
-                if(goal.type == "Distance"){
-                    goal["value"] = goal.Distance;
+
+                switch (goal.Type)
+                {
+                    case "Weight":
+                        goal["value"] = goal.Weight;
+                        break;
+                    case "CaloriesBurned":
+                        goal["value"] = goal.CaloriesBurned;
+                        break;
+                    case "CaloriesEaten":
+                        goal["value"] = goal.CaloriesEaten;
+                        break;
+                    case "Duration":
+                        goal["value"] = goal.Duration;
+                        break;
+                    case "Distance":
+                        goal["value"] = goal.Distance;
+                        break;
+                    default:
+                        goal["value"] = "No goal";
+                        break;
                 }
 
                 count++;
             });
+
+            console.log(goals);
         }
-        
-        console.log(goals);
 
         res.render('../src/views/pages/dashboard', {
             dashboard: dashboard,

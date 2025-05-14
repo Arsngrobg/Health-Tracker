@@ -1,5 +1,5 @@
 {
-    "goalTypes": ["Weight", "Calories", "Distance", "Duration"],
+    "goalTypes": ["Weight", "CaloriesBurned", "CaloriesEaten", "Distance", "Duration"],
     "addGoal": "Add Your Goals",
     "typeText": "Select type of goal",
     "valueText": "Input your goal value",

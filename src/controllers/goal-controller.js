@@ -2,13 +2,42 @@ const goalModel = require('../models/goal');
 
 exports.addGoal = async(req, res) => {
     const userID = res.locals.user.UserID;
-    const duration = req.body.duration;
-    const distance = req.body.distance;
-    const caloriesBurned = req.body.caloriesBurned;
-    const caloriesEaten = req.body.caloriesEaten;
-    const weight = req.body.weight;
+    const type = req.body.type;
+    const date = req.body.date;
+    let tempDuration = null;
+    let tempDistance = null;
+    let tempCaloriesBurned = null;
+    let tempCaloriesEaten = null;
+    let tempWeight = null;
+
+    switch(type)
+    {
+        case "Weight":
+            tempWeight = req.body.value;
+            break;
+        case "CaloriesBurned":
+            tempCaloriesBurned = req.body.value;
+            break;
+        case "CaloriesEaten":
+            tempCaloriesEaten = req.body.value;
+            break;
+        case "Distance":
+            tempDistance = req.body.value;
+            break;
+        case "Duration":
+            tempDuration = req.body.value;
+            break;
+    }
+
+    const duration = tempDuration;
+    const distance = tempDistance;
+    const caloriesBurned = tempCaloriesBurned;
+    const caloriesEaten = tempCaloriesEaten;
+    const weight = tempWeight;
+
     try {
-        await goalModel.addGoal(userID, duration, distance, caloriesBurned, caloriesEaten, weight);
+        await goalModel.addGoal(userID, type, duration, distance, caloriesBurned, caloriesEaten, weight, date);
+        res.redirect('/');
     }
     catch (err) {
         console.log(err);
@@ -26,19 +55,13 @@ exports.fetchAll = async(req, res, date) => {
     }
 };
 
-exports.fetchAll = async(req, res) => {
-    const userID = res.locals.user.UserID;
+exports.completeGoal = async(req, res) => {
+    const goalID = req.body.goalID;
     try{
-        const goals = await goalModel.fetchAll(userID);
-        return goals;
+        await goalModel.completeGoal(goalID);
+        res.redirect('/');
     }
-    catch (err)
-    {
+    catch (err){
         console.log(err);
     }
-};
-
-exports.removeGoal = async(req, res) => {
-    const userID = res.locals.user.UserID;
-    const goalID = req.body.duration;
 };
