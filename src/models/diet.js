@@ -54,9 +54,25 @@ const fetchAll = async(userID, date) => {
     }
 };
 
+const fetchAllHistory = async(userID) => {
+    try {
+        const [result] = await db.query(`SELECT DietEntry.EntryID, DietEntry.Date, DietEntry.MealID, Meal.Name AS Name FROM DietEntry JOIN Meal ON DietEntry.MealID = Meal.MealID
+            WHERE DietEntry.UserID = ? ORDER BY DietEntry.Date DESC`, [userID]);
+        if (result.length === 0) {
+            return null;
+        }
+        return result;
+    }
+    catch (err) {
+        console.log(err);
+        return 0;
+    }
+};
+
 module.exports = {
     deleteEntries,
     mealsToday,
     fetchAll,
+    fetchAllHistory,
     addEntry
 };

@@ -106,10 +106,10 @@ CREATE TABLE IF NOT EXISTS ExerciseEntry (
     EntryID  BIGINT                                                                           NOT NULL AUTO_INCREMENT PRIMARY KEY,
     Activity VARCHAR(32) NOT NULL,
     UserID   BIGINT                                                                           NULL,
-    Duration INT    CONSTRAINT C_DurPos CHECK ( Duration > 0 )										   DEFAULT (0), -- Minutes
-    Distance INT    CONSTRAINT C_DisPos CHECK ( Distance > 0 )								  		   DEFAULT (0), -- Metres
-    Count    INT    CONSTRAINT C_CouPos CHECK ( Count > 0 )								      NOT NULL DEFAULT (1),
-    Calories INT    CONSTRAINT C_CalPos CHECK ( Calories > 0 )								  NOT NULL,
+    Duration INT    CONSTRAINT C_DurPos CHECK ( Duration >= 0 )										   DEFAULT (0), -- Minutes
+    Distance INT    CONSTRAINT C_DisPos CHECK ( Distance >= 0 )								  		   DEFAULT (0), -- Metres
+    Count    INT    CONSTRAINT C_CouPos CHECK ( Count >= 0 )								  NOT NULL DEFAULT (1),
+    Calories INT    CONSTRAINT C_CalPos CHECK ( Calories >= 0 )								  NOT NULL,
     Date     DATE                                                                             NOT NULL DEFAULT ( CURDATE() ),
     FOREIGN KEY (UserID) REFERENCES User(UserID) ON DELETE CASCADE
 );
