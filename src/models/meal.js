@@ -30,7 +30,20 @@ const fetchAll = async(userID) => {
         if (result.length === 0) {
             return null;
         }
-        
+        return result;
+    }
+    catch (err) {
+        console.log(err);
+        return 0;
+    }
+};
+
+const getMealConsumables = async(mealID) => {
+    try {
+        const [result] = await db.query('SELECT * FROM MealConsumable WHERE MealID = ?', [mealID]);
+        if (result.length === 0) {
+            return null;
+        }
         return result;
     }
     catch (err) {
@@ -42,5 +55,6 @@ const fetchAll = async(userID) => {
 module.exports = {
     addMeal,
     addMealConsumable,
+    getMealConsumables,
     fetchAll
 };

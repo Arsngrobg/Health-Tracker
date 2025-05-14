@@ -24,8 +24,23 @@ const fetchAll = async(userID) => {
     }
 };
 
+const getConsumable = async(consumableID) => {
+    try {
+        const [result] = await db.query('SELECT * FROM Consumable WHERE ConsumableID = ?', [consumableID]);
+        if (result.length === 0) {
+            return null;
+        }
+        return result;
+    }
+    catch (err) {
+        console.log(err);
+        return 0;
+    }
+};
+
 
 module.exports = {
     addConsumable,
+    getConsumable,
     fetchAll
 }

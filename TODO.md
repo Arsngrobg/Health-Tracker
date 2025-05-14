@@ -8,11 +8,11 @@ This list is a marker to determine what the Health Tracker should have as a mini
  - [x] Login Sanitization/Invalid Details Check
 
 ## User Food/Drink/Exercise Health
- - [ ] Create Default Set of Food & Drink
- - [ ] Diet Entry Capture
- - [ ] Custom Diet Entry Capture
- - [ ] Exercise Entry Capture
- - [ ] Custom Exercise Entry Capture
+ - [x] Create Default Set of Food & Drink
+ - [x] Diet Entry Capture
+ - [x] Custom Diet Entry Capture
+ - [x] Exercise Entry Capture
+ - [x] Custom Exercise Entry Capture
  - [x] Health Parameter Entry
 
 ## User Groups
@@ -29,4 +29,4 @@ This list is a marker to determine what the Health Tracker should have as a mini
  - [x] Delete Health Records
 
 ## Visualisation
- - [ ] Graphs
+ - [x] Graphs

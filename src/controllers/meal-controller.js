@@ -17,11 +17,21 @@ exports.addMeal = async(req, res) => {
     }
 };
 
-exports.fetchAll = async(req, res) => {
+exports.fetchAllMeals = async(req, res) => {
     const userID = res.locals.user.UserID;
     try {
         const meals = await mealModel.fetchAll(userID);
         return meals;
+    }
+    catch (err) {
+        console.log(err);
+    }
+};
+
+exports.fetchAllMealConsumables = async(req, res, mealID) => {
+    try {
+        const mealConsumables = await mealModel.getMealConsumables(mealID);
+        return mealConsumables;
     }
     catch (err) {
         console.log(err);

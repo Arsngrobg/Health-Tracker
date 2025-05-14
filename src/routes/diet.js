@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
         res.redirect('/users/login');
     }
     else {
-        const meals = await mealController.fetchAll(req, res) || [];
+        const meals = await mealController.fetchAllMeals(req, res) || [];
         const consumables = await consumableController.fetchAll(req, res) || [];
         res.render('../src/views/pages/diet', {
             diet: diet,

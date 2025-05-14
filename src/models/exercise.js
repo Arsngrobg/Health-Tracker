@@ -10,13 +10,25 @@ const addEntry = async(activity, userID, duration, distance, calories, count) =>
     }
 };
 
-const fetchAll = async(userID) => {
+const fetchAll = async(userID, date = null) => {
     try {
-        const [exerciseEntries] = await db.execute(`SELECT Activity, Duration, Distance, Count, Calories, Date FROM ExerciseEntry WHERE UserID = ? GROUP BY Date ORDER BY Date ASC`, userID);
-        return exerciseEntries;
+        let result;
+        if(date) {
+            const [query] = await db.query(`SELECT * FROM ExerciseEntry WHERE UserID = ? AND Date >= ?`, [userID, date]);
+            result = query;
+        }
+        else {
+            const [query] = await db.query(`SELECT * FROM ExerciseEntry WHERE UserID = ?`, [userID]);
+            result = query;
+        }
+        if (result.length === 0) {
+            return null;
+        }
+        return result;
     }
     catch (err) {
-        throw err;
+        console.log(err);
+        return 0;
     }
 };
 

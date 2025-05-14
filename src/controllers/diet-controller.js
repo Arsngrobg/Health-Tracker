@@ -32,3 +32,14 @@ exports.addEntry = async(req, res) => {
         console.log(err);
     }
 };
+
+exports.fetchAll = async(req, res, date) => {
+    const userID = res.locals.user.UserID;
+    try {
+        const dietEntries = await dietModel.fetchAll(userID, date);
+        return dietEntries;
+    }
+    catch (err) {
+        console.log(err);
+    }
+};

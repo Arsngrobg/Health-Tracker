@@ -6,11 +6,188 @@
         <link rel="stylesheet" href="/css/main.css">
         <link rel="stylesheet" href="/css/navigation.css">
         <link rel="stylesheet" href="/css/footer.css">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/luxon@3/build/global/luxon.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon@1.3.0"></script>
         <title>Operation: Health</title>
     </head>
     <body>
         <%- include('../common/navigation.ejs') %>
         <main>
+            <form method="GET" id="filters">
+                <fieldset>
+                    <legend>Select metrics</legend>
+                    <% const allMetrics = ['Calories eaten', 'Calories burned', 'Distance covered', 'Duration exercised']; %>
+                    <% allMetrics.forEach(metric => { %>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="metric" value="<%= metric %>"
+                            <%= selectedMetrics.includes(metric) ? 'checked' : '' %>
+                            onChange="this.form.submit()">
+                        <%= metric.replace('_', ' ') %>
+                    </label>
+                <% }) %>
+                </fieldset>
+                <div id="time-range">
+                <label for="range">Time range</label>
+                <select id="range" name="range" onchange="this.form.submit()">
+                    <option value="7" <%= range == 7 ? 'selected' : '' %>>Last 7 days</option>
+                    <option value="30" <%= range == 30 ? 'selected' : '' %>>Last 30 days</option>
+                    <option value="365" <%= range == 365 ? 'selected' : '' %>>Last year</option>
+                </select>
+            </div>
+            </form>
+            <canvas id="chart"></canvas>
+            <!-- Just to fix 'expression expected' error when dealing with ejs in a script -->
+            <script id="json" type="application/json">
+            {
+                "selectedMetrics": <%- JSON.stringify(selectedMetrics) %>,
+                "actual": <%- JSON.stringify(data) %>,
+                "goals": <%- JSON.stringify(goals) %>,
+                "filteredDates": <%- JSON.stringify(filteredDates) %>
+            }
+            </script>
+            <script>
+                const json = JSON.parse(document.getElementById('json').textContent);
+                const selectedMetrics = json.selectedMetrics;
+                const actual = json.actual;
+                const goals = json.goals;
+                const filteredDates = json.filteredDates;
+                const datasets = [];
+
+                function generateDataset(metric, actualData, goalData = [], labelActual, labelGoal, colourActual, filteredDates) {
+                    const map = buildMap(actualData || [], metric);
+                    const datasets = [
+                        {
+                            label: labelActual,
+                            data: filteredDates.map(date => map[date] || 0), // For each date, gets value from the map, or defaults to 0
+                            borderColor: colourActual
+                        }
+                    ];
+                    goalData.forEach((goal, index) => {
+                        const goalMap = filteredDates.map(date => {
+                            if (new Date(date) <= new Date(goal.date)) {
+                                return goal.value;
+                            }
+                            return null; // After the goal end date, the goal line stops
+                        });
+                        const goalDateFormatted = new Date(goal.date).toLocaleDateString(undefined, {
+                            year: 'numeric',
+                            month: 'short',
+                            day: 'numeric'
+                        });
+                        datasets.push({
+                            label: `${labelGoal} ${index + 1} - (${goalDateFormatted}): ${goal.value}`,
+                            data: goalMap,
+                            borderColor: `rgb(${(index * 50) % 255}, ${(index * 100) % 255}, ${(index * 150) % 255})`, // Unique colour
+                            borderDash: [5, 5]
+                        });
+                    });
+                    return datasets;
+                };
+
+                // Array of metrics and their corresponding data
+                const metrics = [
+                    {
+                        name: 'Calories eaten',
+                        actualData: actual.caloriesEaten,
+                        goalData: goals.CaloriesEaten,
+                        labelActual: 'Calories Eaten',
+                        labelGoal: 'Calories Goal',
+                        key: 'Calories eaten',
+                        colourActual: 'green'
+                    },
+                    {
+                        name: 'Calories burned',
+                        actualData: actual.exercises.calories,
+                        goalData: goals.CaloriesBurned,
+                        labelActual: 'Calories Burned',
+                        labelGoal: 'Calories Goal',
+                        key: 'Calories burned',
+                        colourActual: 'blue'
+                    },
+                    {
+                        name: 'Distance covered',
+                        actualData: actual.exercises.distance,
+                        goalData: goals.Distance,
+                        labelActual: 'Distance Covered (metres)',
+                        labelGoal: 'Distance Goal (metres)',
+                        key: 'Distance',
+                        colourActual: 'purple'
+                    },
+                    {
+                        name: 'Duration exercised',
+                        actualData: actual.exercises.duration,
+                        goalData: goals.Duration,
+                        labelActual: 'Exercise Duration (minutes)',
+                        labelGoal: 'Duration Goal (minutes)',
+                        key: 'Duration',
+                        colourActual: 'red'
+                    }
+                ];
+
+                selectedMetrics.forEach(selectedMetric => {
+                    const metricInformation = metrics.find(metric => metric.name.trim().toLowerCase() === selectedMetric.trim().toLowerCase()); // Match selected metrics (checked) to metric name
+                    if (metricInformation) {
+                        const newDataSets = generateDataset(
+                            metricInformation.key,
+                            metricInformation.actualData,
+                            metricInformation.goalData,
+                            metricInformation.labelActual,
+                            metricInformation.labelGoal,
+                            metricInformation.colourActual,
+                            filteredDates
+                        );
+                        datasets.push(...newDataSets); // Spreads the elements into individual arguments, rather than array as single element
+                    }
+                });
+
+                function createChart() {
+                    new Chart(document.getElementById('chart'), {
+                        type: 'line',
+                        data: {
+                            labels: filteredDates,
+                            datasets: datasets // All lines
+                        },
+                        options: {
+                            responsive: true,
+                            scales: {
+                                x: {
+                                    type: 'time',
+                                    time: {
+                                    unit: 'day',
+                                    tooltipFormat: 'DD T',
+                                    displayFormats: {
+                                        day: 'MMM d'
+                                    }
+                                    },
+                                    title: {
+                                    display: true,
+                                    text: 'Date'
+                                    }
+                                },
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+                };
+
+                function buildMap(array, key) { // Converts list of {date, value} entries to object {'YYYY-MM-DD' : value}
+                    const map = {};
+                    array.forEach(row => {
+                        const date = row.date;
+                        const actualKey = Object.keys(row).find(k => k.trim().toLowerCase() === key.trim().toLowerCase()); // No spaces or capitalisation
+                        const value = actualKey ? row[actualKey] : undefined; // If key exists, get value from row
+                        map[date] = value || 0; // Stores value in map, keyed by date
+                    });
+                    return map;
+                };
+
+                document.addEventListener('DOMContentLoaded', () => {
+                    createChart();
+                });
+            </script>
         </main>
         <%- include('../common/footer.ejs') %>
     </body>

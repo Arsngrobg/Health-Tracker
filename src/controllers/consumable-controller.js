@@ -31,3 +31,13 @@ exports.fetchAll = async(req, res) => {
         console.log(err);
     }
 };
+
+exports.getConsumable = async(req, res, consumableID) => {
+    try {
+        const consumable = await consumableModel.getConsumable(consumableID);
+        return consumable;
+    }
+    catch (err) {
+        console.log(err);
+    }
+};

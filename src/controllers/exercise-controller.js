@@ -1,10 +1,8 @@
 const exerciseModel = require('../models/exercise');
 
-const privacySettings = require('../json/privacy-settings.json');
-
 exports.addEntry = async(req, res) => {
     const userID = res.locals.user.UserID;
-    const activity = req.body.activity;
+    let activity = req.body.activity;
     const customActivity = req.body.customActivity;
     const duration = req.body.duration;
     const distance = req.body.distance;
@@ -23,7 +21,8 @@ exports.addEntry = async(req, res) => {
         activity = customActivity;
     }
     try {
-        await exerciseModel.addEntry(activity, userID, duration, distance, calories, count);
+        await exerciseModel.addEntry(activity, userID, duration || 0, distance || 0, calories, count || 1);
+        res.redirect('/exercise');
     }
     catch (err) {
         console.log(err);
@@ -45,6 +44,17 @@ exports.weeklyWorkouts = async(req, res) => {
     try {
         const count = await exerciseModel.weeklyWorkouts(userID);
         return count;
+    }
+    catch (err) {
+        console.log(err);
+    }
+};
+
+exports.fetchAll = async(req, res, date) => {
+    const userID = res.locals?.user?.UserID;
+    try {
+        const exercises = await exerciseModel.fetchAll(userID, date);
+        return exercises;
     }
     catch (err) {
         console.log(err);

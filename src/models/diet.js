@@ -32,8 +32,31 @@ const addEntry = async(userID, mealID) => {
     }
 };
 
+const fetchAll = async(userID, date) => {
+    try {
+        let result;
+        if(date) {
+            const [query] = await db.query(`SELECT * FROM DietEntry WHERE UserID = ? OR UserID IS NULL AND Date >= ?`, [userID, date]);
+            result = query;
+        }
+        else {
+            const [query] = await db.query(`SELECT * FROM DietEntry WHERE UserID = ? OR UserID IS NULL`, [userID]);
+            result = query;
+        }
+        if (result.length === 0) {
+            return null;
+        }
+        return result;
+    }
+    catch (err) {
+        console.log(err);
+        return 0;
+    }
+};
+
 module.exports = {
     deleteEntries,
     mealsToday,
+    fetchAll,
     addEntry
 };
