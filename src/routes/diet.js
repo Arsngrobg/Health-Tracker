@@ -14,10 +14,12 @@ router.get('/', async (req, res) => {
     else {
         const meals = await mealController.fetchAllMeals(req, res) || [];
         const consumables = await consumableController.fetchAll(req, res) || [];
+        const dietEntries = await dietController.fetchAllHistory(req, res) || [];
         res.render('../src/views/pages/diet', {
             diet: diet,
             meals: meals,
-            consumables: consumables
+            consumables: consumables,
+            dietEntries: dietEntries
         });
     }
 });

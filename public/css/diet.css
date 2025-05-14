@@ -1,10 +1,20 @@
-
-h2 {
-    font-size: 2.5rem;
-    color: #014f86;
-    margin: 0 0 0.5rem 0;
-    text-align: center;
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 5%;
+    padding: 0 5%;
 }
+
+#create-meal,
+#create-consumable,
+#diet-capture,
+#diet-history {
+    flex: 1 1 20%;
+    min-width: 10%;
+    height: 50%;
+}
+
 form {
     display: flex;
     align-items: center;
@@ -13,7 +23,6 @@ form {
     flex-direction: column;
     height: 100%;
     border: 1px solid #014f86;
-    margin: 0 30% 0 30%;
     border-radius: 5px;
 }
 
@@ -25,6 +34,7 @@ fieldset {
     flex-direction: column;
     justify-content: center;
     height: 100%;
+    gap: 0.5rem;
 }
 
 fieldset p {
@@ -32,19 +42,6 @@ fieldset p {
     font-size: 1rem;
 }
 
-button{
-    align-self: center;
-    color: white;
-    margin: 2rem 1rem;
-    background-color: #014f86;
-    width: 100%;
-    min-height: 2rem;
-    padding: 0.8rem;
-    border: 1px solid #014f86;
-    border-radius: 5px;
-    font-size: 1.5rem;
-    font-weight: bold;
-}
 .error {
     padding: 0.5rem 0;
     font-weight: normal;
@@ -72,10 +69,10 @@ legend {
 label {
     display: block;
     width: 100%;
-    padding: 1rem 0 0.5rem 0;
+    padding: 1rem 0 0 0;
 } 
 
-input, textarea, select  {
+input, textarea, select {
     padding: 0.6rem;
     border: 1px solid #014f86;
     border-radius: 5px;
@@ -85,18 +82,18 @@ input:hover, textarea:hover {
     border-color: #00BFFF;
 }
 
-input:focus, textarea:focus {
+input:focus, textarea:focus{
     background-color: white;
     border-color: #00BFFF;
     outline: 1px solid #00BFFF;
 }
 
-#submit {
+.submit {
     align-self: center;
     color: white;
     margin: 2rem 1rem;
     background-color: #014f86;
-    width: 30%;
+    width: 60%;
     min-height: 2rem;
     padding: 0.8rem;
     border: 1px solid #014f86;
@@ -105,10 +102,96 @@ input:focus, textarea:focus {
     font-weight: bold;
 }
 
-#submit:hover {
+.submit:hover {
     background-color: white;
     border-color: #014f86;
     transition-duration: 0.2s;
     color: #014f86;
     cursor: pointer;
+}
+
+#create {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    height: auto;
+    overflow: visible;
+}
+
+#create form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%; 
+    border: 1px solid #014f86;
+    border-radius: 5px;
+    padding: 1rem; 
+}
+
+#diet-history {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #014f86;
+    border-radius: 5px;
+    justify-content: flex-start;
+    max-height: 50vh;
+    overflow-y: auto;
+}
+
+#create-consumable form {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #014f86;
+    border-radius: 5px;
+    justify-content: flex-start;
+    max-height: 50vh;
+    overflow-y: auto;
+}
+
+#diet-capture {
+    max-height: 25vh;
+}
+
+#create-meal form {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #014f86;
+    border-radius: 5px;
+    justify-content: flex-start;
+    max-height: 50vh;
+    overflow-y: auto;
+}
+
+h1 {
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 1rem 0 0.5rem 0;
+    color: #014f86;
+}
+
+#diet-list p strong {
+    color: #014f86;
+}
+
+#diet-list p {
+    margin: 0 0 0 1rem;
+}
+
+#diet-history p {
+    margin: 0 0 0 1rem;
+}
+
+#diet-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    overflow-y: auto;
+}
+
+#diet-list .diet-entry:last-child {
+    margin-bottom: 1rem;
+}
+
+#addMore {
+    margin-bottom: 0;
 }

@@ -12,31 +12,62 @@
     <body>
         <%- include('../common/navigation.ejs') %>
         <main>
-            <form method="POST">
-                <fieldset>
-                    <label>Select exercise</label>
-                    <select name="activity" id="activity">
-                        <% exercises.forEach(name => { %>
-                          <option value="<%= name %>"><%= name %></option>
-                        <% }) %>
-                      </select>
-                    <label>Enter your own exercise</label>
-                    <input id="customActivity" type="text" name="customActivity">  
-                    <label>Enter duration</label>
-                    <input id="duration" type="number" name="duration">
-                    <label>Enter distance if appropriate</label>
-                    <input id="distance" type="number" name="distance">
-                    <label>Enter amount of calories burnt</label>
-                    <input id="caloriesBurnt" type="number" name="caloriesBurnt">
-                    <label>Enter amount done</label>
-                    <input id="count" type="number" name="count" value="1">
-                    <button id="submit">
-                        Submit
-                        <i class="fa-regular fa-paper-plane"></i>
-                    </button>
-                </fieldset>
-            </form>
+            <section id="exercise-capture">
+                <form method="POST">
+                    <fieldset>
+                        <legend>
+                            Make an exercise entry
+                        </legend>
+                        <p>Required fields are marked with an asterisk</p>
+                        <label>Select exercise (*):</label>
+                        <select name="activity" id="activity">
+                            <% exercises.forEach(name => { %>
+                            <option value="<%= name %>"><%= name %></option>
+                            <% }) %>
+                        </select>
+                        <label>Enter your own exercise:</label>
+                        <input id="customActivity" type="text" name="customActivity">  
+                        <label>Enter duration (*):</label>
+                        <input id="duration" type="number" name="duration">
+                        <label>Enter distance if appropriate:</label>
+                        <input id="distance" type="number" name="distance">
+                        <label>Enter amount of calories burnt:</label>
+                        <input id="caloriesBurned" type="number" name="caloriesBurned">
+                        <label>Enter amount done if appropriate (*):</label>
+                        <input id="count" type="number" name="count" value="1">
+                        <button id="submit">
+                            Submit
+                            <i class="fa-regular fa-paper-plane"></i>
+                        </button>
+                    </fieldset>
+                </form>
+            </section>
             <!-- Display history of exercise entries -->
+            <section id="exercise-history">
+                <h1>Exercise History</h1>
+                <% if (exerciseEntries) { %>
+                    <div id="exercise-list">
+                        <% exerciseEntries.forEach(entry => { %>
+                            <div class="exercise-entry">
+                                <p><strong>Exercise:</strong> <%= entry.Activity %></p>
+                                <p><strong>Duration:</strong> <%= entry.Duration %> minute(s)</p>
+                                <p><strong>Distance:</strong> <%= entry.Distance %> metre(s)</p>
+                                <p><strong>Count:</strong> <%= entry.Count %></p>
+                                <p><strong>Calories Burned:</strong> <%= entry.Calories %></p>
+                                <%
+                                    const date = new Date(entry.Date);
+                                    const day = String(date.getUTCDate()).padStart(2, '0');
+                                    const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+                                    const year = date.getUTCFullYear();
+                                    const formattedDate = `${day}/${month}/${year}`;
+                                %>
+                                <p><strong>Date:</strong> <%= formattedDate %></p>                               
+                            </div>
+                        <% }) %>
+                    </div>
+                <% } else { %>
+                    <p>No exercise history yet</p>
+                <% } %>
             </section>
         </main>
         <%- include('../common/footer.ejs') %>

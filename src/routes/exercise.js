@@ -11,9 +11,11 @@ router.get('/', async (req, res) => {
     }
     else {
         const exercises = ['Running', 'Walking', 'Swimming', 'Cycling', 'Squats', 'Pushups', 'Situps'];
+        const exerciseEntries = await exerciseController.fetchAll(req, res, null);
         res.render('../src/views/pages/exercise', { 
             exercise: exercise,
-            exercises: exercises
+            exercises: exercises,
+            exerciseEntries: exerciseEntries
         });
     }
 });

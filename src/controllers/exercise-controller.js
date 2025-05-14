@@ -6,15 +6,15 @@ exports.addEntry = async(req, res) => {
     const customActivity = req.body.customActivity;
     const duration = req.body.duration;
     const distance = req.body.distance;
-    const caloriesBurnt = req.body.caloriesBurnt;
+    const caloriesBurned = req.body.caloriesBurned;
     const count = req.body.count;
 
-    let calories = caloriesBurnt;
+    let calories = caloriesBurned;
     if(req.body.calories) {
-        calories = caloriesBurnt;
+        calories = caloriesBurned;
     }
     else {
-        calories = calories;
+        calories = caloriesBurned;
         // Insert functions here
     }
     if (customActivity){

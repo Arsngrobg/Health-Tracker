@@ -11,76 +11,104 @@
     <body>
         <%- include('../common/navigation.ejs') %>
         <main>
-            <h2>Make a diet entry</h2>
-            <form method="POST" action="/diet/dietentry">
-                <fieldset>
-                    <p>Select a meal</p>
-                    <select name="mealID" id="meal">
-                        <% meals.forEach(meal => { %>
-                          <option value="<%= meal.MealID %>"><%= meal.Name %></option>
-                        <% }) %>
-                    </select>
-                    <button id="submit">
-                        Add
-                        <i class="fa-regular fa-paper-plane"></i>
-                    </button>
-                </fieldset>
-            </form>
-            <h2>Create a new meal</h2>
-            <form method="POST" action="/diet/meal">
-                <fieldset>
-                    <p>Create a meal</p>
-                    <input id="name" type="text" name="name" required>
-                    <p>Add food or drink </p>
-                    <div id="consumables">
-                        <div class="consumables">
-                            <select name="consumables" required>
-                                <% consumables.forEach(consumable => { %>
-                                  <option value="<%= consumable.ConsumableID %>"><%= consumable.Name %></option>
-                                <% }) %>
-                              </select>
+            <section id="create-meal">
+                <form method="POST" action="/diet/meal">
+                    <legend>Create a new meal</legend>
+                    <fieldset>
+                        <label>Create a meal</label>
+                        <input id="name" type="text" name="name" required>
+                        <label>Add food or a drink</label>
+                        <div id="consumables">
+                            <div class="consumables">
+                                <select name="consumables" required>
+                                    <% consumables.forEach(consumable => { %>
+                                        <option value="<%= consumable.ConsumableID %>"><%= consumable.Name %></option>
+                                    <% }) %>
+                                    </select>
+                            </div>
                         </div>
-                    </div>
-                    <button type="button" onclick="addConsumable()">Add more to the meal</button>
-                    <button id="submit">
-                        Add
-                        <i class="fa-regular fa-paper-plane"></i>
-                    </button>
-                </fieldset>
-            </form>
-            <h2> Create a new food or drink</h2>
-            <form method="POST" action="/diet/consumable">
-                <fieldset>
-                    <p>Enter new food or drink name</p>
-                    <input id="name" type="text" name="name" required>
-                      <p>Food or Drink</p>
-                      <select name="type" id="type">
-                          <option value="food">Food</option>
-                          <option value="drink">Drink</option>
+                        <button type="button" class="submit" id="addMore" onclick="addConsumable()">Add more to the meal</button>
+                        <button class="submit">
+                            Add
+                            <i class="fa-regular fa-paper-plane"></i>
+                        </button>
+                    </fieldset>
+                </form>
+            </section>
+            <section id="create-consumable">
+                <form method="POST" action="/diet/consumable">
+                    <fieldset>
+                        <legend>Create a new food or drink</legend>
+                        <p>Required fields are marked with an asterisk</p>
+                        <label>Enter new food or drink name (*):</label>
+                        <input id="name" type="text" name="name" required>
+                        <label>Select food or drink (*):</label>
+                        <select name="type" id="type">
+                            <option value="food">Food</option>
+                            <option value="drink">Drink</option>
                         </select>
-                    <label>Enter the amount of calories</label>
-                    <input id="calories" type="text" name="calories" required>
-                    <label>Enter the amount of fats</label>
-                    <input id="fats" type="text" name="fats" required>
-                    <label>Enter the amount of saturates</labelp>
-                    <input id="saturates" type="text" name="saturates" required>
-                    <label>Enter the amount of carbohydrates</label>
-                    <input id="carbohydrates" type="text" name="carbohydrates" required>
-                    <label>Enter the amount of sugar</label>
-                    <input id="sugar" type="text" name="sugar" required>
-                    <label>Enter the amount of fibre</label>
-                    <input id="fibre" type="text" name="fibre" required>
-                    <plabel>Enter the amount of protein</label>
-                    <input id="protein" type="text" name="protein" required>
-                    <label>How many grams is the values above for?</label>
-                    <input id="amount" type="text" name="amount" required>
-                    <button id="submit">
-                        Add
-                        <i class="fa-regular fa-paper-plane"></i>
-                    </button>
-                </fieldset>
-            </form>
-            <!-- Display history of diet entries -->
+                        <label>Enter the amount of calories (*):</label>
+                        <input id="calories" type="text" name="calories" required>
+                        <label>Enter the amount of fats (*):</label>
+                        <input id="fats" type="text" name="fats" required>
+                        <label>Enter the amount of saturates (*):</label>
+                        <input id="saturates" type="text" name="saturates" required>
+                        <label>Enter the amount of carbohydrates (*):</label>
+                        <input id="carbohydrates" type="text" name="carbohydrates" required>
+                        <label>Enter the amount of sugar (*):</label>
+                        <input id="sugar" type="text" name="sugar" required>
+                        <label>Enter the amount of fibre (*):</label>
+                        <input id="fibre" type="text" name="fibre" required>
+                        <label>Enter the amount of protein (*):</label>
+                        <input id="protein" type="text" name="protein" required>
+                        <label>Enter the grams the values above are for (*):</label>
+                        <input id="amount" type="text" name="amount" required>
+                        <button class="submit">
+                            Add
+                            <i class="fa-regular fa-paper-plane"></i>
+                        </button>
+                    </fieldset>
+                </form>
+            </section>
+            <section id="diet-capture">
+                <form method="POST" action="/diet/dietentry">
+                    <fieldset>
+                        <legend>Make a diet entry</legend>
+                        <label>Select a meal:</label>
+                        <select name="mealID" id="meal">
+                            <% meals.forEach(meal => { %>
+                            <option value="<%= meal.MealID %>"><%= meal.Name %></option>
+                            <% }) %>
+                        </select>
+                        <button class="submit">
+                            Add
+                            <i class="fa-regular fa-paper-plane"></i>
+                        </button>
+                    </fieldset>
+                </form>
+            </section>
+            <section id="diet-history">
+                <h1>Diet History</h1>
+                <% if (dietEntries) { %>
+                    <div id="diet-list">
+                        <% dietEntries.forEach(entry => { %>
+                            <div class="diet-entry">
+                                <p><strong>Meal:</strong> <%= entry.Name %></p>
+                                <%
+                                    const date = new Date(entry.Date);
+                                    const day = String(date.getUTCDate()).padStart(2, '0');
+                                    const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+                                    const year = date.getUTCFullYear();
+                                    const formattedDate = `${day}/${month}/${year}`;
+                                %>
+                                <p><strong>Date:</strong> <%= formattedDate %></p>                               
+                            </div>
+                        <% }) %>
+                    </div>
+                <% } else { %>
+                    <p>No diet history yet</p>
+                <% } %>
+            </section>
         </main>
         <%- include('../common/footer.ejs') %>
     </body>

@@ -43,3 +43,14 @@ exports.fetchAll = async(req, res, date) => {
         console.log(err);
     }
 };
+
+exports.fetchAllHistory = async(req, res) => {
+    const userID = req.session.user.UserID;
+    try {
+        const rows = dietModel.fetchAllHistory(userID);
+        return rows;
+    } 
+    catch (err) {
+        console.log(err);
+    }
+}
