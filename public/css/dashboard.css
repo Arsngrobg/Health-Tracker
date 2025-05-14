@@ -3,13 +3,79 @@ h1 {
     font-size: 2.5rem;
 }
 
+h2 {
+    font-size: 2.5rem;
+    color: #014f86;
+    margin: 0 0 0.5rem 0;
+    text-align: center;
+}
+
+h3 {
+    font-size: 1.5rem;
+    color: #014f86;
+    margin: 0 0 0.5rem 0;
+    text-align: center;
+}
+
 section {
     margin: 0 20%;
+    padding-bottom: 5%;
+    display: block;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #014f86;
+    flex-direction: column;
+    height: 100%;
+    border: 1px solid #014f86;
+    margin: 0 0% 0 0%;
+    border-radius: 5px;
 }
 
 main {
-    display: flex;
+    display: block;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+}
+
+fieldset {
+    display: flex;
+    width: 80%;
+    background-color: white;
+    border: 0;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+
+button{
+    align-self: center;
+    color: white;
+    margin: 2rem 1rem;
+    background-color: #014f86;
+    width: 100%;
+    min-height: 2rem;
+    padding: 0.8rem;
+    border: 1px solid #014f86;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+fieldset a {
+    padding: 0.5rem 0;
+    text-decoration: none;
+    color: #014f86;
+    text-decoration: underline;
+}
+
+fieldset a:hover {
+    cursor: pointer;
+    color: #00BFFF;
+    transition-duration: 0.2;
 }

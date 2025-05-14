@@ -5,11 +5,40 @@ const router = express.Router();
 const landing = require('../json/landing.json');
 const dashboard = require('../json/dashboard.json');
 
-router.get('/', (req, res) => {
+const goalController = require('../controllers/goal-controller');
+
+router.get('/', async(req, res) => {
     if(res.locals.loggedIn) {
+        const goals = await goalController.fetchAll(req, res) || [];
+        if(goals != []){
+            let count = 1;
+
+            goals.forEach(goal => {
+                goal["Count"] = count;
+                
+                if(goal.type == "Weight"){
+                    goal["value"] = goal.Weight;
+                }
+                if(goal.type == "Calories"){
+                    goal["value"] = goal.Calories;
+                }
+                if(goal.type == "Duration"){
+                    goal["value"] = goal.Duration;
+                }
+                if(goal.type == "Distance"){
+                    goal["value"] = goal.Distance;
+                }
+
+                count++;
+            });
+        }
+        
+        console.log(goals);
+
         res.render('../src/views/pages/dashboard', {
             dashboard: dashboard,
-            user: res.locals.user
+            user: res.locals.user,
+            goals: goals
         });
     }
     else {

@@ -25,3 +25,20 @@ exports.fetchAll = async(req, res, date) => {
         console.log(err);
     }
 };
+
+exports.fetchAll = async(req, res) => {
+    const userID = res.locals.user.UserID;
+    try{
+        const goals = await goalModel.fetchAll(userID);
+        return goals;
+    }
+    catch (err)
+    {
+        console.log(err);
+    }
+};
+
+exports.removeGoal = async(req, res) => {
+    const userID = res.locals.user.UserID;
+    const goalID = req.body.duration;
+};

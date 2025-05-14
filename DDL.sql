@@ -41,12 +41,14 @@ CREATE TABLE IF NOT EXISTS UserGroupMembership (
 CREATE TABLE IF NOT EXISTS Goal (
     GoalID         BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     UserID         BIGINT NOT NULL,
+    Type           ENUM("Weight", "Calories", "Distance", "Duration") NOT NULL,
     Duration       INT, -- Minutes
     Distance       INT, -- Metres
     CaloriesBurned INT, -- Per day
     CaloriesEaten  INT, -- Per day
     Weight         INT,
     Date           DATE   NOT NULL DEFAULT ( CURDATE() ),
+    Completed Boolean                                            NOT NULL DEFAULT (FALSE),
     FOREIGN KEY (UserID) REFERENCES User(UserID) ON DELETE CASCADE
 );
 

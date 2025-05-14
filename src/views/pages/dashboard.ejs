@@ -11,8 +11,50 @@
     <body>
         <%- include('../common/navigation.ejs') %>
         <main>
-            <section>
+            <section id="greeting">
                 <h1>Welcome to your dashboard, <%= user.Username %></h1>
+            </section>
+
+            <section id = "goals">
+                <section id="displayGoals">
+                    <h3>Current Goals:</h3>
+
+                    <% goals.forEach(goal => {%>
+                        <p><b>Goal Number <%= goal.Count %>: </b>Type = <%= goal.type %>, Goal = <%= goal.value %></p>
+                    <% }) %>
+                
+                </section>
+
+                <section id="addGoal">
+
+                <h3><%= dashboard.addGoal %></h3>
+
+                    <form method="POST" action="/users/addGoal">
+                        <fieldset>
+                            <label><%= dashboard.typeText %></label>
+                            <select name="type" id="type">
+                                <% dashboard.goalTypes.forEach( goalT => {%>
+                                    <option value="<%= goalT %>"><%= goalT %></option>
+                                <% }) %>
+                            </select>
+                            <label><%= dashboard.valueText %></label>
+                            <input id="value" type="number" name="value" placeholder="<%= dashboard.value %>" required>
+                            <label><%= dashboard.dateText %></label>
+                            <input id="date" type="date" name="date" placeholder="<%= dashboard.date %>" required>
+                            <button id="submit">Add</button>
+                        </fieldset>
+                    </form>
+
+                </section>
+
+                <form method="POST" action="/users/removeGoal">
+                    <select name="goalID" id="goal">
+                        <% goals.forEach(goal => {%>
+                            <option value="<%= goal.goalID %>">Goal Number <%= goal.Count %></option>
+                        <% }) %>
+                    </select>
+                </form>
+
             </section>
         </main>
         <%- include('../common/footer.ejs') %>
