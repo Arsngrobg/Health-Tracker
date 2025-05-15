@@ -1,4 +1,5 @@
 const exerciseModel = require('../models/exercise');
+const userModel = require('../models/user');
 
 exports.addEntry = async(req, res) => {
     const userID = res.locals.user.UserID;
@@ -14,8 +15,43 @@ exports.addEntry = async(req, res) => {
         calories = caloriesBurned;
     }
     else {
-        calories = caloriesBurned;
-        // Insert functions here
+        calories = 1;
+        const weight = await userModel.findWeight(userID);
+        console.log(weight)
+        if (weight){
+            switch (activity) {
+                case "Swimming":
+                    calories = (duration * weight * 7) / 200;
+                    break;
+                case "Running":
+                    calories = ((distance * 7 * weight) / 60) / 200;
+                    break;
+                case "Rowing":
+                    calories = (distance / 2 * weight) / 25;
+                    break;
+                case "Walking":
+                    calories = (2.5 * duration * weight) / 200;
+                    break;
+                case "Cycling":
+                    calories = (3.5 * duration * weight) / 200;
+                    break;
+                case "Squats":
+                    calories = 8 * duration;
+                    break;
+                case "Pushups":
+                    calories = 7 * duration;
+                    break;
+                case "Situps":
+                    calories = 0.25 * count;
+                default:
+                    calories = 10;
+                    break;
+            }
+            console.log(calories);
+            calories = Math.round(calories);
+        }else{
+            calories = 10;
+        }
     }
     if (customActivity){
         activity = customActivity;

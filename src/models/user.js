@@ -29,6 +29,16 @@ const findUser = async(identifier) => {
     return user[0];
 };
 
+// For getting weight
+const findWeight = async(userID) => {
+    const [user] = await db.execute('SELECT Weight FROM User WHERE UserID = ?', [userID]);
+    console.log(user);
+    if (user.length === 0) {
+        return null;
+    }
+    return user[0].Weight;
+}
+
 // For password reset
 const changePassword = async(identifier, password) => {
     try {
@@ -79,6 +89,7 @@ module.exports = {
     createUser,
     deleteUser,
     findUser,
+    findWeight,
     changePassword,
     updateUserProfile,
     updateUserAccount,
