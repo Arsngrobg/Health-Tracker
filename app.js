@@ -10,7 +10,6 @@ app.use(express.json());
 
 app.listen(port, console.log(`Server listening on port ${port}`))
 
-const main = require('./src/json/main.json');
 const navigation = require('./src/json/navigation.json');
 const settings = require('./src/json/settings-bar.json');
 const footer = require('./src/json/footer.json');
@@ -22,7 +21,6 @@ app.use(session({
 }));
   
 app.use((req, res, next) => {
-    res.locals.main = main;
     res.locals.navigation = navigation;
     res.locals.settings = settings;
     res.locals.footer = footer;

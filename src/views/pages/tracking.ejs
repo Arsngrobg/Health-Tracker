@@ -16,7 +16,7 @@
         <main>
             <form method="GET" id="filters">
                 <fieldset>
-                    <legend>Select metrics</legend>
+                    <legend><%= tracking.select %></legend>
                     <% const allMetrics = ['Calories eaten', 'Calories burned', 'Distance covered', 'Duration exercised']; %>
                     <% allMetrics.forEach(metric => { %>
                     <label class="checkbox-label">
@@ -28,11 +28,11 @@
                 <% }) %>
                 </fieldset>
                 <div id="time-range">
-                <label for="range">Time range</label>
+                <label for="range"><%= tracking.timeRange %></label>
                 <select id="range" name="range" onchange="this.form.submit()">
-                    <option value="7" <%= range == 7 ? 'selected' : '' %>>Last 7 days</option>
-                    <option value="30" <%= range == 30 ? 'selected' : '' %>>Last 30 days</option>
-                    <option value="365" <%= range == 365 ? 'selected' : '' %>>Last year</option>
+                    <option value="7" <%= range == 7 ? 'selected' : '' %>><%= tracking.option1 %></option>
+                    <option value="30" <%= range == 30 ? 'selected' : '' %>><%= tracking.option2 %></option>
+                    <option value="365" <%= range == 365 ? 'selected' : '' %>><%= tracking.option3 %></option>
                 </select>
             </div>
             </form>

@@ -80,26 +80,33 @@ router.get('/', async (req, res) => {
 
     // Transform it into a grouped structure
     const goals = {
-        CaloriesBurned: [],
-        CaloriesEaten: [],
+        Duration: [],
         Distance: [],
-        Duration: []
+        CaloriesBurned: [],
+        CaloriesEaten: []
     };
 
     for (let i = 0; i < (rawGoals || []).length; i++) {
         const goal = rawGoals[i];
-        const date = goal.Date || new Date().toISOString().split('T')[0]; // fallback date
-        if (goal.CaloriesBurned) {
-            goals.CaloriesBurned.push({date, value: goal.CaloriesBurned});
-        }
-        if (goal.CaloriesEaten) {
-            goals.CaloriesEaten.push({date, value: goal.CaloriesEaten});
-        }
-        if (goal.Distance) {
-            goals.Distance.push({date, value: goal.Distance});
-        }
-        if (goal.Duration) {
-            goals.Duration.push({date, value: goal.Duration});
+        const date = goal.Date || new Date().toISOString().split('T')[0];
+
+        const goalDate = new Date(date);
+        const today = new Date();
+        today.setHours(0,0,0,0);
+
+        if(!goal.Completed && goalDate >= today) {
+            if (goal.CaloriesBurned) {
+                goals.CaloriesBurned.push({date, value: goal.CaloriesBurned});
+            }
+            if (goal.CaloriesEaten) {
+                goals.CaloriesEaten.push({date, value: goal.CaloriesEaten});
+            }
+            if (goal.Distance) {
+                goals.Distance.push({date, value: goal.Distance});
+            }
+            if (goal.Duration) {
+                goals.Duration.push({date, value: goal.Duration});
+            }
         }
     }
 

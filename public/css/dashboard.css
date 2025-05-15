@@ -1,6 +1,29 @@
+#goals {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin: 5%;
+}
+
+#completed-goals, #current-goals {
+    border: solid 1px #014f86;
+    border-radius: 5px;
+    overflow-y: scroll;
+}
+
+section {
+    height: 99%;
+}
+
+#current-goals p, #completed-goals p {
+    margin-left: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
 h1 {
     color: #014f86;
     font-size: 2.5rem;
+    text-align: center;
 }
 
 h2 {
@@ -10,17 +33,12 @@ h2 {
     text-align: center;
 }
 
-h3 {
-    font-size: 1.5rem;
-    color: #014f86;
-    margin: 0 0 0.5rem 0;
+#goals section h3 {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
     text-align: center;
-}
-
-section {
-    margin: 0 20%;
-    padding-bottom: 5%;
-    display: block;
+    color: #014f86;
+    font-size: 1.5rem;
 }
 
 form {
@@ -35,13 +53,6 @@ form {
     border-radius: 5px;
 }
 
-main {
-    display: block;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
-
 fieldset {
     display: flex;
     width: 80%;
@@ -53,18 +64,26 @@ fieldset {
 }
 
 
-button{
+#submit {
     align-self: center;
     color: white;
     margin: 2rem 1rem;
     background-color: #014f86;
-    width: 100%;
+    width: 40%;
     min-height: 2rem;
     padding: 0.8rem;
     border: 1px solid #014f86;
     border-radius: 5px;
     font-size: 1.5rem;
     font-weight: bold;
+}
+
+#submit:hover {
+    background-color: white;
+    border-color: #014f86;
+    transition-duration: 0.2s;
+    color: #014f86;
+    cursor: pointer;
 }
 
 fieldset a {
@@ -81,6 +100,5 @@ fieldset a:hover {
 }
 
 #displayGoals, #completedGoals{
-    max-height:50px;
     overflow-y: scroll;
 }

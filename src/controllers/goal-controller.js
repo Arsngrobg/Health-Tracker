@@ -3,38 +3,30 @@ const goalModel = require('../models/goal');
 exports.addGoal = async(req, res) => {
     const userID = res.locals.user.UserID;
     const type = req.body.type;
+    let duration = 0;
+    let distance = 0;
+    let caloriesBurned = 0;
+    let caloriesEaten = 0;
+    let weight = 0;
     const date = req.body.date;
-    let tempDuration = null;
-    let tempDistance = null;
-    let tempCaloriesBurned = null;
-    let tempCaloriesEaten = null;
-    let tempWeight = null;
-
     switch(type)
     {
-        case "Weight":
-            tempWeight = req.body.value;
+        case "Duration exercised":
+            duration = req.body.value;
             break;
-        case "CaloriesBurned":
-            tempCaloriesBurned = req.body.value;
+        case "Distance covered":
+            distance = req.body.value;
             break;
-        case "CaloriesEaten":
-            tempCaloriesEaten = req.body.value;
+        case "Calories burned (per day)":
+            caloriesBurned = req.body.value;
             break;
-        case "Distance":
-            tempDistance = req.body.value;
+        case "Calories eaten (per day)":
+            caloriesEaten = req.body.value;
             break;
-        case "Duration":
-            tempDuration = req.body.value;
+        case "Target weight":
+            weight = req.body.value;
             break;
     }
-
-    const duration = tempDuration;
-    const distance = tempDistance;
-    const caloriesBurned = tempCaloriesBurned;
-    const caloriesEaten = tempCaloriesEaten;
-    const weight = tempWeight;
-
     try {
         await goalModel.addGoal(userID, type, duration, distance, caloriesBurned, caloriesEaten, weight, date);
         res.redirect('/');

@@ -1,1 +1,7 @@
-{}
+{
+    "select" : "Select metrics",
+    "timeRange" : "Time range",
+    "option1" : "Last 7 days",
+    "option2" : "Last 30 days",
+    "option3" : "Last year"
+}

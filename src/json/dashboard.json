@@ -1,9 +1,15 @@
 {
-    "goalTypes": ["Weight", "CaloriesBurned", "CaloriesEaten", "Distance", "Duration"],
-    "addGoal": "Add Your Goals",
+    "welcome" : "Welcome to your dashboard,",
+    "current" : "Current goals",
+    "goalTypes": ["Target weight", "Calories burned (per day)", "Calories eaten (per day)", "Distance covered", "Duration exercised"],
+    "addGoal": "Set a goal",
+    "button1" : "Add",
     "typeText": "Select type of goal",
     "valueText": "Input your goal value",
-    "dateText": "Input date you wish to acomplish the goals by",
-    "value": "value",
-    "date": "date"
+    "dateText": "Input your goal deadline",
+    "value": "Enter value",
+    "date": "Date",
+    "mark" : "Mark complete",
+    "button2" : "Complete",
+    "completed" : "Completed goals"
 }

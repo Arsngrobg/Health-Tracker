@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS UserGroupMembership (
 CREATE TABLE IF NOT EXISTS Goal (
     GoalID         BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     UserID         BIGINT NOT NULL,
-    Type           ENUM("Weight", "CaloriesBurned", "CaloriesEaten", "Distance", "Duration") NOT NULL,
+    Type           ENUM('Duration exercised', 'Distance covered', 'Calories burned (per day)', 'Calories eaten (per day)', 'Target weight') NOT NULL,
     Duration       INT, -- Minutes
     Distance       INT, -- Metres
     CaloriesBurned INT, -- Per day

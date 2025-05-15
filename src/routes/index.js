@@ -10,58 +10,56 @@ const goalController = require('../controllers/goal-controller');
 router.get('/', async(req, res) => {
     if(res.locals.loggedIn) {
         const goals = await goalController.fetchAll(req, res, null) || [];
-        if(goals != []){
+        if(goals.length > 0){
             let count = 1;
-
+            const today = new Date();
+            today.setHours(0,0,0,0);
             goals.forEach(goal => {
-                goal["Count"] = count;
-
+                goal.count = count;
                 count++;
-
-                switch (goal.Type)
-                {
-                    case "Weight":
-                        goal["value"] = goal.Weight;
+                switch (goal.Type) {
+                    case "Duration exercised":
+                        goal.value = goal.Duration;
                         break;
-                    case "CaloriesBurned":
-                        goal["value"] = goal.CaloriesBurned;
+                    case "Distance covered":
+                        goal.value = goal.Distance;
                         break;
-                    case "CaloriesEaten":
-                        goal["value"] = goal.CaloriesEaten;
+                    case "Calories burned (per day)":
+                        goal.value = goal.CaloriesBurned;
                         break;
-                    case "Duration":
-                        goal["value"] = goal.Duration;
+                    case "Calories eaten (per day)":
+                        goal.value = goal.CaloriesEaten;
                         break;
-                    case "Distance":
-                        goal["value"] = goal.Distance;
+                    case "Target weight":
+                        goal.value = goal.Weight;
                         break;
                     default:
-                        goal["value"] = "No goal";
-                        break;
+                        goal.value = "No goal";
                 }
-
-                const date = new Date();
-
-                console.log(goal.Date);
-                console.log(date);
-
-                if(goal.Date >= date){
-                    goal["expired"] = false;
-                }else{
-                    goal["expired"] = true;
+                const goalDate = new Date(goal.Date);
+                goalDate.setHours(0,0,0,0);
+                if (!goal.Completed) {
+                    goal.expired = goalDate < today ? true : false;
+                } 
+                else {
+                    goal.expired = false;
                 }
             });
-
-            console.log(goals);
+            res.locals.activeGoals = goals.filter(goal => !goal.Completed && !goal.expired);
+            res.locals.completedGoals = goals.filter(goal => goal.Completed);
+        } 
+        else {
+            res.locals.activeGoals = [];
+            res.locals.completedGoals = [];
         }
-
         res.render('../src/views/pages/dashboard', {
             dashboard: dashboard,
             user: res.locals.user,
-            goals: goals
+            goals: goals,
+            activeGoals: res.locals.activeGoals,
+            completedGoals: res.locals.completedGoals
         });
-    }
-    else {
+    } else {
         res.render('../src/views/pages/landing', {
             landing: landing
         });

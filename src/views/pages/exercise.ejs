@@ -1,75 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="/css/exercise.css">
-        <link rel="stylesheet" href="/css/main.css">
-        <link rel="stylesheet" href="/css/navigation.css">
-        <link rel="stylesheet" href="/css/footer.css">
-        <script src="/js/exercise-selection.js" defer></script>
-        <title>Operation: Health</title>
-    </head>
-    <body>
-        <%- include('../common/navigation.ejs') %>
-        <main>
-            <section id="exercise-capture">
-                <form method="POST">
-                    <fieldset>
-                        <legend>
-                            Make an exercise entry
-                        </legend>
-                        <p>Required fields are marked with an asterisk</p>
-                        <label>Select exercise (*):</label>
-                        <select name="activity" id="activity">
-                            <% exercises.forEach(name => { %>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/exercise.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/navigation.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <script src="/js/exercise-selection.js" defer></script>
+    <title>Operation: Health</title>
+</head>
+<body>
+    <%- include('../common/navigation.ejs') %>
+    <main>
+        <section id="exercise-capture">
+            <form method="POST">
+                <fieldset>
+                    <legend><%= exercise.captureLegend %></legend>
+                    <p><%= exercise.captureNote %></p>
+                    <label><%= exercise.selectExerciseLabel %></label>
+                    <select name="activity" id="activity">
+                        <% exercises.forEach(name => { %>
                             <option value="<%= name %>"><%= name %></option>
-                            <% }) %>
-                        </select>
-                        <label>Enter your own exercise:</label>
-                        <input id="customActivity" type="text" name="customActivity">  
-                        <label>Enter duration (*):</label>
-                        <input id="duration" type="number" name="duration">
-                        <label>Enter distance if appropriate:</label>
-                        <input id="distance" type="number" name="distance">
-                        <label>Enter amount of calories burnt:</label>
-                        <input id="caloriesBurned" type="number" name="caloriesBurned">
-                        <label>Enter amount done if appropriate (*):</label>
-                        <input id="count" type="number" name="count" value="1">
-                        <button id="submit">
-                            Submit
-                            <i class="fa-regular fa-paper-plane"></i>
-                        </button>
-                    </fieldset>
-                </form>
-            </section>
-            <!-- Display history of exercise entries -->
-            <section id="exercise-history">
-                <h1>Exercise History</h1>
-                <% if (exerciseEntries) { %>
-                    <div id="exercise-list">
-                        <% exerciseEntries.forEach(entry => { %>
-                            <div class="exercise-entry">
-                                <p><strong>Exercise:</strong> <%= entry.Activity %></p>
-                                <p><strong>Duration:</strong> <%= entry.Duration %> minute(s)</p>
-                                <p><strong>Distance:</strong> <%= entry.Distance %> metre(s)</p>
-                                <p><strong>Count:</strong> <%= entry.Count %></p>
-                                <p><strong>Calories Burned:</strong> <%= entry.Calories %></p>
-                                <%
-                                    const date = new Date(entry.Date);
-                                    const day = String(date.getUTCDate()).padStart(2, '0');
-                                    const month = String(date.getUTCMonth() + 1).padStart(2, '0');
-                                    const year = date.getUTCFullYear();
-                                    const formattedDate = `${day}/${month}/${year}`;
-                                %>
-                                <p><strong>Date:</strong> <%= formattedDate %></p>                               
-                            </div>
                         <% }) %>
-                    </div>
-                <% } else { %>
-                    <p>No exercise history yet</p>
-                <% } %>
-            </section>
-        </main>
-        <%- include('../common/footer.ejs') %>
-    </body>
+                    </select>
+                    <label><%= exercise.customExerciseLabel %></label>
+                    <input id="customActivity" type="text" name="customActivity">
+                    <label><%= exercise.durationLabel %></label>
+                    <input id="duration" type="number" name="duration">
+                    <label><%= exercise.distanceLabel %></label>
+                    <input id="distance" type="number" name="distance">
+                    <label><%= exercise.caloriesLabel %></label>
+                    <input id="caloriesBurned" type="number" name="caloriesBurned">
+                    <label><%= exercise.countLabel %></label>
+                    <input id="count" type="number" name="count" value="1">
+                    <button id="submit">
+                        <%= exercise.submitButton %>
+                        <i class="fa-regular fa-paper-plane"></i>
+                    </button>
+                </fieldset>
+            </form>
+        </section>
+        <section id="exercise-history">
+            <h1><%= exercise.historyTitle %></h1>
+            <% if (exerciseEntries && exerciseEntries.length > 0) { %>
+                <div id="exercise-list">
+                    <% exerciseEntries.forEach(entry => { %>
+                        <div class="exercise-entry">
+                            <p><strong><%= exercise.historyExercise %></strong> <%= entry.Activity %></p>
+                            <p><strong><%= exercise.historyDuration %></strong> <%= entry.Duration %> minute(s)</p>
+                            <p><strong><%= exercise.historyDistance %></strong> <%= entry.Distance %> metre(s)</p>
+                            <p><strong><%= exercise.historyCount %></strong> <%= entry.Count %></p>
+                            <p><strong><%= exercise.historyCalories %></strong> <%= entry.Calories %></p>
+                            <%
+                                const date = new Date(entry.Date);
+                                const day = String(date.getUTCDate()).padStart(2, '0');
+                                const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+                                const year = date.getUTCFullYear();
+                                const formattedDate = `${day}/${month}/${year}`;
+                            %>
+                            <p><strong><%= exercise.historyDate %></strong> <%= formattedDate %></p>
+                        </div>
+                    <% }) %>
+                </div>
+            <% } else { %>
+                <p><%= exercise.historyNone %></p>
+            <% } %>
+        </section>
+    </main>
+    <%- include('../common/footer.ejs') %>
+</body>
 </html>

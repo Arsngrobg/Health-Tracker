@@ -2,7 +2,7 @@ const db = require('../config/db');
 
 const addGoal = async(userID, type, duration, distance, caloriesBurned, caloriesEaten, weight, date) => {
     try {
-        await db.execute('INSERT INTO Goal (UserID, type, Duration, Distance, CaloriesBurned, CaloriesEaten, Weight, date) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+        await db.execute('INSERT INTO Goal (UserID, Type, Duration, Distance, CaloriesBurned, CaloriesEaten, Weight, Date) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
             [userID, type, duration, distance, caloriesBurned, caloriesEaten, weight, date]);
     }
     catch (err) {

@@ -1,55 +1,19 @@
-[
-    {
-        "exercise": "Push-Ups",
-        "type": "weight",
-        "areasTargetted": ["Triceps", "Pectorals", "Shoulders", "Core"]
-    },
-
-    {
-        "exercise": "Sit-ups",
-        "type": "weight",
-        "areasTargetted": ["core"]
-    },
-    {
-        "exercise": "Bicep Curls",
-        "type": "weight",
-        "areasTargetted": ["Bicep", "Brachialis", "Brachiordialis"]
-    },
-
-    {
-        "exercise": "Running",
-        "type": "cardio",
-        "calsBurned": "(time * speed * weight * 1.6) / 200",
-        "areasTargetted": ["Quadriceps", "Glutes", "Hamstrings", "Calves"]
-    },
-
-    {
-        "exercise": "Swimming",
-        "type": "cardio",
-        "calsBurned": "(time * weight * 7) / 200"
-    },
-
-    {
-        "exercise": "Rowing",
-        "intensitiy": "moderate(100 watts)",
-        "type": "cardio",
-        "calsBurnedCalcByWeightPerHalfHour": "(8 * weight) / 5 - 1",
-        "areasTargetted":["Hamstrings", "Glutes", "Calves", "Spinal Erectors"]
-    },
-
-    {
-        "exercise": "Rowing",
-        "intensitiy": "vigorous(150 watts)",
-        "type": "cardio",
-        "calsBurnedCalcByWeightPerHalfHour": "(48 * weight) / 25 + 2",
-        "areasTargetted":["Hamstrings", "Glutes", "Calves", "Spinal Erectors"]
-    },
-
-    {
-        "exercise": "Rowing",
-        "intensitiy": "very vigorous(200 watts)",
-        "type": "cardio",
-        "calsBurnedCalcByWeightPerHalfHour": "(68 * weight) / 25 + 1",
-        "areasTargetted":["Hamstrings", "Glutes", "Calves", "Spinal Erectors"]
-    }
-]
+{
+    "captureLegend": "Make an exercise entry",
+    "captureNote": "Required fields are marked with an asterisk",
+    "selectExerciseLabel": "Select exercise (*):",
+    "customExerciseLabel": "Enter your own exercise:",
+    "durationLabel": "Enter duration (*):",
+    "distanceLabel": "Enter distance if appropriate:",
+    "caloriesLabel": "Enter amount of calories burnt:",
+    "countLabel": "Enter amount done if appropriate (*):",
+    "submitButton": "Submit",
+    "historyTitle": "Exercise History",
+    "historyExercise": "Exercise:",
+    "historyDuration": "Duration:",
+    "historyDistance": "Distance:",
+    "historyCount": "Count:",
+    "historyCalories": "Calories Burned:",
+    "historyDate": "Date:",
+    "historyNone": "No exercise history yet"
+}

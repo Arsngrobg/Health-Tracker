@@ -135,6 +135,7 @@ input:focus, textarea:focus{
     border-radius: 5px;
     justify-content: flex-start;
     max-height: 50vh;
+    min-height: 50vh;
     overflow-y: auto;
 }
 
