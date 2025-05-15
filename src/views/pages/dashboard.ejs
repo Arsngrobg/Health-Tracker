@@ -16,13 +16,14 @@
             </section>
 
             <section id = "goals">
+                <h3>Current Goals:</h3>
+
                 <section id="displayGoals">
-                    <h3>Current Goals:</h3>
 
                     <% goals.forEach(goal => {%>
-                        <% console.log(goal.Completed) %>
                         <% if(!goal.Completed) { %>
-                            <p><b>Goal Number <%= goal.Count %>: </b>Type = <%= goal.Type %>, Goal = <%= goal.value %></p>
+                            <p><b>Goal <%= goal.Count %>: </b>Type = <%= goal.Type %>, 
+                                Goal = <%= goal.value %>, Expired = <%= goal.expired %></p>
                         <% } %>
                     <% }) %>
                 
@@ -50,18 +51,35 @@
 
                 </section>
 
-                <form method="POST" action="/users/completeGoal">
-                    <fieldset>
-                        <select name="goalID" id="goal">
-                            <% goals.forEach(goal => {%>
-                                <% if(!goal.Completed){ %>
-                                    <option value="<%= goal.GoalID %>">Goal Number <%= goal.Count %></option>
-                                <% } %>
-                            <% }) %>
-                        </select>
-                        <button id="submit">Mark Complete</button>
-                    </fieldset>
-                </form>
+                <section>
+
+                    <form method="POST" action="/users/completeGoal">
+                        <fieldset>
+                            <select name="goalID" id="goal">
+                                <% goals.forEach(goal => {%>
+                                    <% if(!goal.Completed){ %>
+                                        <option value="<%= goal.GoalID %>">Goal <%= goal.Count %></option>
+                                    <% } %>
+                                <% }) %>
+                            </select>
+                            <button id="submit">Mark Complete</button>
+                        </fieldset>
+                    </form>
+
+                </section>
+
+                <h3>Completed Goals</h3>
+
+                <section id="completedGoals">
+
+                    <% goals.forEach(goal => {%>
+                        <% if(goal.Completed) { %>
+                            <p><b>Goal <%= goal.Count %>: </b>Type = <%= goal.Type %>, 
+                                Goal = <%= goal.value %>, Expired = <%= goal.expired %></p>
+                        <% } %>
+                    <% }) %>
+
+                </section>
 
             </section>
         </main>

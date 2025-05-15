@@ -16,6 +16,8 @@ router.get('/', async(req, res) => {
             goals.forEach(goal => {
                 goal["Count"] = count;
 
+                count++;
+
                 switch (goal.Type)
                 {
                     case "Weight":
@@ -38,7 +40,16 @@ router.get('/', async(req, res) => {
                         break;
                 }
 
-                count++;
+                const date = new Date();
+
+                console.log(goal.Date);
+                console.log(date);
+
+                if(goal.Date >= date){
+                    goal["expired"] = false;
+                }else{
+                    goal["expired"] = true;
+                }
             });
 
             console.log(goals);

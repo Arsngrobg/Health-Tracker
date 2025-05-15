@@ -79,3 +79,8 @@ fieldset a:hover {
     color: #00BFFF;
     transition-duration: 0.2;
 }
+
+#displayGoals, #completedGoals{
+    max-height:50px;
+    overflow-y: scroll;
+}
