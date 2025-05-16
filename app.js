@@ -8,7 +8,7 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({extended : true}));
 app.use(express.json());
 
-app.listen(port, console.log(`Server listening on port ${port}`))
+app.listen(200, console.log(`Server listening on port ${port}`))
 
 const navigation = require('./src/json/navigation.json');
 const settings = require('./src/json/settings-bar.json');
@@ -28,6 +28,9 @@ app.use((req, res, next) => {
     res.locals.loggedIn = req.session.user;
     next();
 });
+
+const groups = require('./src/models/group.js');
+groups.create('bombohehee')
 
 // Routes
 app.use('/', require('./src/routes/index'));

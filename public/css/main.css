@@ -11,3 +11,27 @@ html {
 body {
     font-family: Calibri;
 }
+
+/* Defines the 'creato-display' font */
+
+@font-face {
+    font-family: creato-display;
+    src:         url('/fonts/creato-display/Creato-Display-Regular.otf')   format('opentype'),
+                 url('/fonts/creato-display/Creato-Display-Regular.woff')  format('woff'),
+                 url('/fonts/creato-display/Creato-Display-Regular.woff2') format('woff2');
+    font-style:  normal;
+    font-weight: normal;
+}
+
+/* Defines the 'bebas' font */
+
+@font-face {
+    font-family: bebas;
+    src:         url('/fonts/bebas/Bebas-Regular.ttf')   format('truetype'),
+                 url('/fonts/bebas/Bebas-Regular.otf')   format('opentype'),
+                 url('/fonts/bebas/Bebas-Regular.woff')  format('woff'),
+                 url('/fonts/bebas/Bebas-Regular.woff2') format('woff2');
+    font-style:  normal;
+    font-weight: normal;
+}
+

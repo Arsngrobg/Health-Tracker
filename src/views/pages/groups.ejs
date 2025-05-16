@@ -10,8 +10,36 @@
     </head>
     <body>
         <%- include('../common/navigation.ejs') %>
-        <main>
-        </main>
+            <main>
+                <div class="search-container">
+                    <form action="/groups/search" method="POST">
+                        <input type="text" name="query" placeholder="Search groups..." required>
+                        <button type="submit">Search</button>
+                    </form>
+                    <p><%= msg %></p>
+                </div>
+
+                <div class="group-list">
+                    <% for (const group of grouplist) { %>
+                    <form method="POST" action="/groups/join" class="group-card">
+                        <input type="hidden" name="group_id" value="<%= group.GroupID %>">
+                        <h2><%= group.GroupName %></h2>
+                        <p><%= group.GroupDesc %></p>
+                        <span><strong>Members:</strong> <%= group.UserCount %></span>
+                    </form>
+                    <% } %>
+                </div>
+
+            </main>
+            <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                    document.querySelectorAll(".group-card").forEach(card => {
+                    card.addEventListener("click", () => {
+                        card.submit();
+                    });
+                    });
+                });
+            </script>
         <%- include('../common/footer.ejs') %>
     </body>
 </html>

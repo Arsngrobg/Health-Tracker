@@ -1,0 +1,79 @@
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+.search-container form {
+    display: flex;
+    gap: 0.5rem;
+    width: 100%;
+    max-width: 500px;
+}
+
+.search-container input[type="text"] {
+    flex: 1;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+}
+
+.search-container button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    background-color: #0078d4;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.search-container button:hover {
+    background-color: #005fa3;
+}
+
+.group-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2rem;
+    max-width: 800px;
+    margin: auto;
+}
+
+.group-card {
+    background: linear-gradient(145deg, #ffffff, #f0f0f0);
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem 2rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    user-select: none;
+}
+
+.group-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+}
+
+.group-card h2 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.group-card p {
+    color: #666;
+    margin: 0.5rem 0 1rem 0;
+}
+
+.group-card span {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.group-card:hover {
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+}

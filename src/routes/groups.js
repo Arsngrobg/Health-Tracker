@@ -13,9 +13,14 @@ router.get('/', (req, res) => {
     }
     else {
         res.render('../src/views/pages/groups', {
-            groups: groups
+            groups: groups,
+            grouplist: [],
+            msg:null
         });
     }
 });
+
+router.post('/search', groupController.list);
+router.post('/join', groupController.join);
 
 module.exports = router;

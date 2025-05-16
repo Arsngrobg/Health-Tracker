@@ -1,94 +1,90 @@
+/* Defines the 'form' component */
+
 form {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #014f86;
-    flex-direction: column;
-    height: 100%;
-    border: 1px solid #014f86;
-    margin: 0 30% 0 30%;
-    border-radius: 5px;
+    min-width:  50%;
+    margin-top: -10vh;
+    font-family: creato-display, sans-serif;
 }
 
 fieldset {
-    display: flex;
-    width: 80%;
+    display:           flex;
+    flex-direction:    column;
+    gap:               1rem;
+    padding:           2rem;
+    border:            1px solid #CCCCCC;
+    border-radius:     10px;
     background-color: white;
-    border: 0;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
+    box-shadow:        0 0 10px rgba(0, 0, 0, 0.05);
 }
 
-fieldset p {
+fieldset legend {
+    font-family: bebas, sans-serif;
+    font-size:   4rem;
     font-weight: bold;
-    font-size: 1rem;
+    text-align:  center;
+}
+
+fieldset label {
+    font-weight: 600;
+    margin-top:  0.5rem;
+}
+
+fieldset input {
+    padding:       0.6rem;
+    border:        1px solid #CCCCCC;
+    border-radius: 5px;
+    font-size:     1rem;
+}
+
+button {
+    margin-top:        1rem;
+    align-self:        center;
+    background-color: #014F86;
+    color:            #FFFFFF;
+    font-weight:        bold;
+    border:             none;
+    border-radius:      5px;
+    cursor:             pointer;
+}
+
+button:hover {
+    background-color: #FFFFFF;
+    color:            #000000;
+}
+
+button {
+    background-color: #014F86;
+    border:            1px solid #014F86;
+    border-radius:     5px;
+    width:             30%;
+    min-height:        3rem;
+}
+
+button b {
+    font-family: creato-display, sans-serif;
+    font-size:   1.5rem;
+    color:     #FFFFFF;
+}
+
+button:hover {
+    background-color:  #FFFFFF;
+    transition-duration: 0.2s;
+    cursor:              pointer;
+}
+
+button:hover b {
+    transition-duration: 0.2s;
+    color:             #000000;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 95vh;
+    padding: 2rem;
 }
 
 .error {
-    padding: 0.5rem 0;
-    font-weight: normal;
-}
-
-fieldset a {
-    padding: 0.5rem 0;
-    text-decoration: none;
-    color: #014f86;
-    text-decoration: underline;
-}
-
-fieldset a:hover {
-    cursor: pointer;
-    color: #00BFFF;
-    transition-duration: 0.2;
-}
-
-legend {
-    font-size: 1.5rem;
-    font-weight: bold;
-    padding: 1rem 0 0.5rem 0;
-}
-
-label {
-    display: block;
-    width: 100%;
-    padding: 1rem 0 0.5rem 0;
-} 
-
-input, textarea {
-    padding: 0.6rem;
-    border: 1px solid #014f86;
-    border-radius: 5px;
-}
-
-input:hover, textarea:hover {
-    border-color: #00BFFF;
-}
-
-input:focus, textarea:focus {
-    background-color: white;
-    border-color: #00BFFF;
-    outline: 1px solid #00BFFF;
-}
-
-#submit {
-    align-self: center;
-    color: white;
-    margin: 2rem 1rem;
-    background-color: #014f86;
-    width: 30%;
-    min-height: 2rem;
-    padding: 0.8rem;
-    border: 1px solid #014f86;
-    border-radius: 5px;
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
-#submit:hover {
-    background-color: white;
-    border-color: #014f86;
-    transition-duration: 0.2s;
-    color: #014f86;
-    cursor: pointer;
+    color: #FF0000;
 }
