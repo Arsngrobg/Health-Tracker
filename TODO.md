@@ -17,11 +17,11 @@ This list is a marker to determine what the Health Tracker should have as a mini
 
 ## User Groups
  - [ ] Group Creation
- - [ ] Group Discovery Tab (With Open Groups)
- - [ ] Group Joining (Through Invite or Discovery)
+ - [x] Group Discovery Tab (With Open Groups)
+ - [x] Group Joining (Through Invite or Discovery)
 
 ## User Goals
- - [ ] Create a Goal
+ - [x] Create a Goal
  - [ ] Share Goals With Group
 
 ## Opt-In/Opt-Out
