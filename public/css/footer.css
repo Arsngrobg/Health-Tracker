@@ -5,5 +5,6 @@ footer {
     height: 5rem;
     margin-top: 5rem;
     overflow: hidden;
-    border-top: 1px solid #00BFFF;
+    background-color: #3f6184;
+    border-top: 5px solid #334257;
 }

@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS UserGroup (
     GroupName VARCHAR(32)  NOT NULL,
     UserCount INT          NOT NULL DEFAULT 1,
     GroupDesc VARCHAR(300)     NULL DEFAULT NULL CONSTRAINT C_DescMty CHECK ( TRIM(GroupDesc) != '' ),
-    Private   BOOLEAN      NOT NULL DEFAULT FALSE
+    Public    BOOLEAN      NOT NULL DEFAULT FALSE
 );
 
 -- UserGroupMembership table definition
